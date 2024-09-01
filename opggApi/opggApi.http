@@ -1,0 +1,6 @@
+@opggApi_HostAddress = http://localhost:5283
+
+GET {{opggApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
