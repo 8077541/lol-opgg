@@ -8,8 +8,8 @@ namespace opggApi.Dtos.Matches
     public class PerkStyleDto
     {
         public string Description { get; set; } = string.Empty;
-        public List<PerkStylSelectionDto> Selections { get; set; } =
-            new List<PerkStylSelectionDto>();
+        public List<PerkStyleSelectionDto> Selections { get; set; } =
+            new List<PerkStyleSelectionDto>();
         public int Style { get; set; }
     }
 }

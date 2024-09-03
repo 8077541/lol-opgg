@@ -21,7 +21,7 @@ namespace opggApi.Dtos.Matches
         public int CommandPings { get; set; }
         public int ChampionTransform { get; set; }
         public int ConsumablesPurchased { get; set; }
-        public ChallengesDto Challenges { get; set; }
+        public ChallengesDto? Challenges { get; set; }
         public int DamageDealtToBuildings { get; set; }
         public int DamageDealtToObjectives { get; set; }
         public int DamageDealtToTurrets { get; set; }
@@ -66,7 +66,7 @@ namespace opggApi.Dtos.Matches
         public int MagicDamageDealt { get; set; }
         public int MagicDamageDealtToChampions { get; set; }
         public int MagicDamageTaken { get; set; }
-        public MissionsDto Missions { get; set; }
+        public MissionsDto? Missions { get; set; }
         public int NeutralMinionsKilled { get; set; }
         public int NeedVisionPings { get; set; }
         public int NexusKills { get; set; }
@@ -90,7 +90,7 @@ namespace opggApi.Dtos.Matches
         public int PlayerScore11 { get; set; }
         public int PentaKills { get; set; }
 
-        public PerksDto Perks { get; set; }
+        public PerksDto? Perks { get; set; }
 
         public int PhysicalDamageDealt { get; set; }
         public int PhysicalDamageDealtToChampions { get; set; }

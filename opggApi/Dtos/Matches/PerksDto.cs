@@ -7,7 +7,7 @@ namespace opggApi.Dtos.Matches
 {
     public class PerksDto
     {
-        public PerkStatsDto StatPerks { get; set; }
-        public List<PerkStylDto> Styles { get; set; }
+        public PerksStatsDto? StatPerks { get; set; }
+        public List<PerkStyleDto>? Styles { get; set; }
     }
 }

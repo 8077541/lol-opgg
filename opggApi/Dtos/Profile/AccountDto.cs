@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace opggApi.Models
 {
-    public class Account
+    public class AccountDto
     {
-
         public string Puuid { get; set; } = string.Empty;
 
         public string GameName { get; set; } = string.Empty;

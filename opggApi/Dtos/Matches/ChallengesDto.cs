@@ -55,7 +55,7 @@ namespace opggApi.Dtos.Matches
         public int DodgeSkillShotsSmallWindow { get; set; }
         public int DoubleAces { get; set; }
         public int DragonTakedowns { get; set; }
-        public List<int> LegendaryItemsUsed { get; set; }
+        public List<int>? LegendaryItemsUsed { get; set; }
         public float EffectiveHealAndShielding { get; set; }
         public int ElderDragonKillsWithOpposingSoul { get; set; }
         public int ElderDragonMultikills { get; set; }
