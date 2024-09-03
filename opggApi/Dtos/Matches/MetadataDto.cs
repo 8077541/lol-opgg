@@ -10,6 +10,6 @@ namespace opggApi.Dtos.Matches
         public string DataVersion { get; set; } = string.Empty;
         public string MatchId { get; set; } = string.Empty;
 
-        public List<string> Participants { get; set; }
+        public List<string>? Participants { get; set; }
     }
 }
