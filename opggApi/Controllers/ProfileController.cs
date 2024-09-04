@@ -31,8 +31,10 @@ namespace opggApi.Controllers
             {
                 return NotFound();
             }
+            var summoner = await _profileRepository.GetSummoner(profile);
+            var rankeds = await _profileRepository.GetRankeds(summoner);
 
-            return Ok(profile);
+            return Ok(rankeds);
         }
     }
 }
