@@ -11,9 +11,9 @@ namespace opggApi.Dtos.Matches
         public int BaronBuffGoldAdvantageOverThreshold { get; set; }
         public float ControlWardTimeCoverageInRiverOrEnemyHalf { get; set; }
 
-        public int EarliestBaron { get; set; }
-        public int EarliestDragonTakedown { get; set; }
-        public int EarliestElderDragon { get; set; }
+        public float EarliestBaron { get; set; }
+        public float EarliestDragonTakedown { get; set; }
+        public float EarliestElderDragon { get; set; }
         public int EarlyLaningPhaseGoldExpAdvantage { get; set; }
         public int FasterSupportQuestCompletion { get; set; }
         public int FastestLegendary { get; set; }

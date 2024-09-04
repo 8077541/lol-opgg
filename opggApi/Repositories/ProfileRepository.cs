@@ -19,7 +19,7 @@ namespace opggApi.Repositories
         {
             var riotApi = _configuration.GetSection("RiotApi").GetSection("ApiKey").Value;
             var response = await _httpClient.GetAsync(
-                $"https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}?api_key={riotApi}"
+                $"https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}?api_key={riotApi}"
             );
             var accountModel = await response.Content.ReadFromJsonAsync<AccountDto>();
 

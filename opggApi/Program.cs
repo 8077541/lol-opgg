@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<IProfileInterface, ProfileRepository>();
+builder.Services.AddScoped<IMatchInterface, MatchRepository>();
 var app = builder.Build();
 app.MapControllers();
 
