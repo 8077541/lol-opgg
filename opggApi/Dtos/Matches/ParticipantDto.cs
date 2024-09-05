@@ -10,7 +10,7 @@ namespace opggApi.Dtos.Matches
         public int AllInPings { get; set; }
         public int AssistMePings { get; set; }
 
-        public int Assits { get; set; }
+        public int Assists { get; set; }
 
         public int BaronKills { get; set; }
         public int BountyLevel { get; set; }

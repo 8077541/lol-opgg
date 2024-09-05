@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using opggApi.Interfaces;
+using opggApi.Mappers;
 
 namespace opggApi.Controllers
 {
@@ -32,7 +33,8 @@ namespace opggApi.Controllers
             {
                 return NotFound();
             }
-            return Ok(match);
+            var matchModel = MatchMapper.MatchDtoToMatch(match);
+            return Ok(matchModel);
         }
     }
 }
