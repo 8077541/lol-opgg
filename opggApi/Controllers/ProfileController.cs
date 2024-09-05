@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using opggApi.Interfaces;
+using opggApi.Mappers;
 using opggApi.Repositories;
 
 namespace opggApi.Controllers
@@ -33,8 +34,8 @@ namespace opggApi.Controllers
             }
             var summoner = await _profileRepository.GetSummoner(profile);
             var rankeds = await _profileRepository.GetRankeds(summoner);
-
-            return Ok(rankeds);
+            var profileDto = ProfileMapper.DtoToProfile(profile, summoner, rankeds);
+            return Ok(profileDto);
         }
     }
 }
