@@ -17,6 +17,18 @@ namespace opggApi.Models
         public int ProfileIconId { get; set; }
         public long SummonerLevel { get; set; }
         public List<LeagueRankeds>? Rankeds { get; set; }
-        public List<string>? LastMatches { get; set; }
+        public string SoloTier { get; set; } = string.Empty;
+        public string SoloRank { get; set; } = string.Empty;
+        public int SoloLeaguePoints { get; set; }
+        public int SoloWins { get; set; }
+        public int SoloLosses { get; set; }
+        public bool SoloHotStreak { get; set; }
+
+        public string FlexTier { get; set; } = string.Empty;
+        public string FlexRank { get; set; } = string.Empty;
+        public int FlexLeaguePoints { get; set; }
+        public int FlexWins { get; set; }
+        public int FlexLosses { get; set; }
+        public bool FlexHotStreak { get; set; }
     }
 }

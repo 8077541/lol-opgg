@@ -9,11 +9,7 @@ namespace opggApi.Mappers
 {
     public class ProfileMapper
     {
-        public static Profile DtoToProfile(
-            AccountDto accountDto,
-            SummonerDto summonerDto,
-            List<LeagueEntryDto> leagueEntryDtos
-        )
+        public static Profile DtoToProfile(AccountDto accountDto, SummonerDto summonerDto)
         {
             return new Profile
             {
@@ -24,29 +20,36 @@ namespace opggApi.Mappers
                 TagLine = accountDto.TagLine,
                 ProfileIconId = summonerDto.ProfileIconId,
                 SummonerLevel = summonerDto.SummonerLevel,
-                Rankeds = EntryDtoToRankeds(leagueEntryDtos),
             };
         }
 
-        public static List<LeagueRankeds> EntryDtoToRankeds(List<LeagueEntryDto> leagueEntryDto)
+        public static Profile LeagueEntryToProfile(
+            Profile profile,
+            List<LeagueEntryDto> leagueEntryDtos
+        )
         {
-            var result = new List<LeagueRankeds> { };
-            foreach (var entry in leagueEntryDto)
+            foreach (var leagueEntryDto in leagueEntryDtos)
             {
-                result.Add(
-                    new LeagueRankeds
-                    {
-                        QueueType = entry.QueueType,
-                        Tier = entry.Tier,
-                        Rank = entry.Rank,
-                        LeaguePoints = entry.LeaguePoints,
-                        Wins = entry.Wins,
-                        Losses = entry.Losses,
-                        HotStreak = entry.HotStreak,
-                    }
-                );
+                if (leagueEntryDto.QueueType == "RANKED_SOLO_5x5")
+                {
+                    profile.SoloTier = leagueEntryDto.Tier;
+                    profile.SoloRank = leagueEntryDto.Rank;
+                    profile.SoloLeaguePoints = leagueEntryDto.LeaguePoints;
+                    profile.SoloWins = leagueEntryDto.Wins;
+                    profile.SoloLosses = leagueEntryDto.Losses;
+                    profile.SoloHotStreak = leagueEntryDto.HotStreak;
+                }
+                else if (leagueEntryDto.QueueType == "RANKED_FLEX_SR")
+                {
+                    profile.FlexTier = leagueEntryDto.Tier;
+                    profile.FlexRank = leagueEntryDto.Rank;
+                    profile.FlexLeaguePoints = leagueEntryDto.LeaguePoints;
+                    profile.FlexWins = leagueEntryDto.Wins;
+                    profile.FlexLosses = leagueEntryDto.Losses;
+                    profile.FlexHotStreak = leagueEntryDto.HotStreak;
+                }
             }
-            return result;
+            return profile;
         }
     }
 }

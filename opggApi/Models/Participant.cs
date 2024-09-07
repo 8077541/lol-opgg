@@ -7,6 +7,7 @@ namespace opggApi.Models
 {
     public class Participant
     {
+        public int Id { get; set; }
         public int Assists { get; set; }
         public int ChampLevel { get; set; }
         public int ChampionId { get; set; }

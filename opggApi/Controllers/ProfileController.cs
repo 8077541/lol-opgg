@@ -14,9 +14,14 @@ namespace opggApi.Controllers
     public class ProfileController : ControllerBase
     {
         private readonly IProfileInterface _profileRepository;
+        private readonly IMatchInterface _matchRepository;
 
-        public ProfileController(IProfileInterface profileRepository)
+        public ProfileController(
+            IProfileInterface profileRepository,
+            IMatchInterface matchRepository
+        )
         {
+            _matchRepository = matchRepository;
             _profileRepository = profileRepository;
         }
 
@@ -34,7 +39,9 @@ namespace opggApi.Controllers
             }
             var summoner = await _profileRepository.GetSummoner(profile);
             var rankeds = await _profileRepository.GetRankeds(summoner);
-            var profileDto = ProfileMapper.DtoToProfile(profile, summoner, rankeds);
+
+            var profileDto = ProfileMapper.DtoToProfile(profile, summoner);
+            ProfileMapper.LeagueEntryToProfile(profileDto, rankeds);
             return Ok(profileDto);
         }
     }

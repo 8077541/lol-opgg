@@ -7,6 +7,7 @@ namespace opggApi.Models
 {
     public class MatchLoL
     {
+        public int Id { get; set; }
         public string? MatchId { get; set; }
         public long GameCreation { get; set; }
         public long GameDuration { get; set; }
