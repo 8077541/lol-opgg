@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,7 +8,7 @@ namespace opggApi.Models
 {
     public class MatchLoL
     {
-        public int Id { get; set; }
+        [Key]
         public string? MatchId { get; set; }
         public long GameCreation { get; set; }
         public long GameDuration { get; set; }

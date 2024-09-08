@@ -10,6 +10,8 @@ namespace opggApi.Interfaces
 {
     public interface IProfileInterface
     {
+        Task<Profile> AddProfileToDb(Profile profile);
+        Task<Profile> GetProfileFromDb(string gameName, string tagLine);
         Task<AccountDto> GetPuuid(string gameName, string tagLine);
         Task<SummonerDto> GetSummoner(AccountDto account);
         Task<List<LeagueEntryDto>> GetRankeds(SummonerDto summoner);

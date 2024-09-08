@@ -28,13 +28,22 @@ namespace opggApi.Controllers
         [HttpGet("matchDetails")]
         public async Task<IActionResult> GetMatchDetails([FromQuery] string matchId)
         {
-            var match = await _matchRepository.GetMatch(matchId);
-            if (match == null)
+            var matchDb = await _matchRepository.GetMatchFromDb(matchId);
+            if (matchDb != null)
             {
-                return NotFound();
+                return Ok(matchDb);
             }
-            var matchModel = MatchMapper.MatchDtoToMatch(match);
-            return Ok(matchModel);
+            else
+            {
+                var match = await _matchRepository.GetMatch(matchId);
+                if (match == null)
+                {
+                    return NotFound();
+                }
+                var matchModel = MatchMapper.MatchDtoToMatch(match);
+                await _matchRepository.AddMatchToDb(matchModel);
+                return Ok(matchModel);
+            }
         }
     }
 }

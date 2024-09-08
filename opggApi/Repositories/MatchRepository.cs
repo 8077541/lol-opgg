@@ -1,17 +1,41 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
+using opggApi.Data;
 using opggApi.Dtos.Matches;
 using opggApi.Interfaces;
+using opggApi.Models;
 
 namespace opggApi.Repositories
 {
-    public class MatchRepository(IConfiguration configuration, HttpClient httpClient)
-        : IMatchInterface
+    public class MatchRepository(
+        IConfiguration configuration,
+        HttpClient httpClient,
+        ApplicationDbContext context
+    ) : IMatchInterface
     {
+        private readonly ApplicationDbContext _context = context;
         private readonly HttpClient _httpClient = httpClient;
         private readonly IConfiguration _configuration = configuration;
+
+        public async Task<MatchLoL> AddMatchToDb(MatchLoL match)
+        {
+            await _context.Matches.AddAsync(match);
+            await _context.SaveChangesAsync();
+            return match;
+        }
+
+        public async Task<MatchLoL> GetMatchFromDb(string match)
+        {
+            return await _context
+                .Matches.Include(p => p.Participants)
+                .Where(m => m.MatchId == match)
+                .FirstOrDefaultAsync();
+        }
 
         public async Task<MatchDto> GetMatch(string matchId)
         {

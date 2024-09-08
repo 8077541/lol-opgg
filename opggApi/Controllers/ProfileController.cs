@@ -31,18 +31,35 @@ namespace opggApi.Controllers
             [FromQuery] string tagLine
         )
         {
-            var profile = await _profileRepository.GetPuuid(gameName, tagLine);
-
-            if (profile == null)
+            var dbProfile = await _profileRepository.GetProfileFromDb(gameName, tagLine);
+            if (dbProfile != null)
             {
-                return NotFound();
+                return Ok(dbProfile);
             }
-            var summoner = await _profileRepository.GetSummoner(profile);
-            var rankeds = await _profileRepository.GetRankeds(summoner);
+            else
+            {
+                var profile = await _profileRepository.GetPuuid(gameName, tagLine);
 
-            var profileDto = ProfileMapper.DtoToProfile(profile, summoner);
-            ProfileMapper.LeagueEntryToProfile(profileDto, rankeds);
-            return Ok(profileDto);
+                if (profile == null)
+                {
+                    return NotFound();
+                }
+                var summoner = await _profileRepository.GetSummoner(profile);
+                if (summoner == null)
+                {
+                    return NotFound();
+                }
+                var rankeds = await _profileRepository.GetRankeds(summoner);
+                if (rankeds == null)
+                {
+                    return NotFound();
+                }
+
+                var profileDto = ProfileMapper.DtoToProfile(profile, summoner);
+                ProfileMapper.LeagueEntryToProfile(profileDto, rankeds);
+                await _profileRepository.AddProfileToDb(profileDto);
+                return Ok(profileDto);
+            }
         }
     }
 }

@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using opggApi.Data;
 using opggApi.Interfaces;
 using opggApi.Repositories;
 
@@ -12,6 +14,12 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<IProfileInterface, ProfileRepository>();
 builder.Services.AddScoped<IMatchInterface, MatchRepository>();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
 var app = builder.Build();
 app.MapControllers();
 

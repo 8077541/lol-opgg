@@ -3,17 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using opggApi.Data;
 using opggApi.Dtos;
 using opggApi.Interfaces;
 using opggApi.Models;
 
 namespace opggApi.Repositories
 {
-    public class ProfileRepository(IConfiguration configuration, HttpClient httpClient)
-        : IProfileInterface
+    public class ProfileRepository(
+        IConfiguration configuration,
+        HttpClient httpClient,
+        ApplicationDbContext context
+    ) : IProfileInterface
     {
+        private readonly ApplicationDbContext _context = context;
         private readonly HttpClient _httpClient = httpClient;
         private readonly IConfiguration _configuration = configuration;
+
+        public async Task<Profile> GetProfileFromDb(string gameName, string tagLine)
+        {
+            return await _context
+                .Profiles.Where(p => p.GameName == gameName && p.TagLine == tagLine)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<Profile> AddProfileToDb(Profile profile)
+        {
+            _context.Profiles.Add(profile);
+            await _context.SaveChangesAsync();
+            return profile;
+        }
 
         public async Task<AccountDto> GetPuuid(string gameName, string tagLine)
         {
