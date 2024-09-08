@@ -1,57 +1,38 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [searchTag, setSearchTag] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
+    const navigate = useNavigate();
+    const [gameName, setGameName] = useState('');
+    const [tagLine, setTagLine] = useState('');
+    const [region, setRegion] = useState('');   
 
-    const handleSearch = (event) => {
-        setSearchTerm(event.target.value);
-        // Perform search logic here
+    const handleSearch = () => {
+        navigate(`/profile/${gameName}/${tagLine}/${region}`);
     };
-    const handleSearchTag = (event) => {
-        setSearchTag(event.target.value);
-        // Perform search logic here
-    };
-    const performSearch = () => {
-        fetch(`http://localhost:5283/api/profile?gameName=${searchTerm}&tagLine=${searchTag}`, {
-            method: 'GET',
-           
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response data
-            console.log(data);
-            setSearchResults(data);
-        })
-        .catch(error => {
-            // Handle any errors
-            console.error(error);
-        });
-    }
 
     return (
         <div>
             <input
                 type="text"
-                value={searchTerm}
-                onChange={handleSearch}
-                placeholder="Search..."
+                placeholder="Summoner Name"
+                value={gameName}
+                onChange={(e) => setGameName(e.target.value)}
             />
             <input
                 type="text"
-                value={searchTag}
-                onChange={handleSearchTag}
-                placeholder="Search..."
+                placeholder="#Riot Tag"
+                value={tagLine}
+                onChange={(e) => setTagLine(e.target.value)}
             />
-            {/* Add additional search-related components or logic here */}
-            
-             <button onClick={performSearch}>Search</button>
+            <input
+                type="text"
+                placeholder="Region"
+                value={region}
+                onChange={(e) => setRegion(e.target.value)}
+            />
+            <button onClick={handleSearch}>Search</button>
         </div>
-       
     );
 };
 

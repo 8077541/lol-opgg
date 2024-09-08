@@ -28,7 +28,8 @@ namespace opggApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPuuid(
             [FromQuery] string gameName,
-            [FromQuery] string tagLine
+            [FromQuery] string tagLine,
+            [FromQuery] string region
         )
         {
             var dbProfile = await _profileRepository.GetProfileFromDb(gameName, tagLine);
@@ -38,18 +39,19 @@ namespace opggApi.Controllers
             }
             else
             {
+                var mappedRegion = ProfileMapper.MapRegion(region);
                 var profile = await _profileRepository.GetPuuid(gameName, tagLine);
 
                 if (profile == null)
                 {
                     return NotFound();
                 }
-                var summoner = await _profileRepository.GetSummoner(profile);
+                var summoner = await _profileRepository.GetSummoner(profile, mappedRegion);
                 if (summoner == null)
                 {
                     return NotFound();
                 }
-                var rankeds = await _profileRepository.GetRankeds(summoner);
+                var rankeds = await _profileRepository.GetRankeds(summoner, mappedRegion);
                 if (rankeds == null)
                 {
                     return NotFound();
@@ -65,21 +67,23 @@ namespace opggApi.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateProfile(
             [FromQuery] string gameName,
-            [FromQuery] string tagLine
+            [FromQuery] string tagLine,
+            [FromQuery] string region
         )
         {
+            var mappedRegion = ProfileMapper.MapRegion(region);
             var profile = await _profileRepository.GetPuuid(gameName, tagLine);
 
             if (profile == null)
             {
                 return NotFound();
             }
-            var summoner = await _profileRepository.GetSummoner(profile);
+            var summoner = await _profileRepository.GetSummoner(profile, mappedRegion);
             if (summoner == null)
             {
                 return NotFound();
             }
-            var rankeds = await _profileRepository.GetRankeds(summoner);
+            var rankeds = await _profileRepository.GetRankeds(summoner, mappedRegion);
             if (rankeds == null)
             {
                 return NotFound();

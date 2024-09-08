@@ -8,22 +8,11 @@ import Search from './Components/Search';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-      
-          </ul>
-        </nav>
+
 
       <Search />
 
-     
-      </div>
-    </Router>
+   
   );
 }
 

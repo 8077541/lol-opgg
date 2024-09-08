@@ -23,9 +23,16 @@ namespace opggApi.Repositories
 
         public async Task<Profile> GetProfileFromDb(string gameName, string tagLine)
         {
-            return await _context
+            var profile = await _context
                 .Profiles.Where(p => p.GameName == gameName && p.TagLine == tagLine)
                 .FirstOrDefaultAsync();
+
+            if (profile == null)
+            {
+                return null;
+            }
+
+            return profile;
         }
 
         public async Task<Profile> AddProfileToDb(Profile profile)
@@ -52,11 +59,11 @@ namespace opggApi.Repositories
         }
 
         // PUUID vEJrdiGhWv_bPfFyTzAbHVxp7ouqQms69W9LUxto9Jc1z5grT68FRY0kVw8ppcnihnlyP5jC5ymvHg
-        public async Task<SummonerDto> GetSummoner(AccountDto account)
+        public async Task<SummonerDto> GetSummoner(AccountDto account, string region)
         {
             var riotApi = _configuration.GetSection("RiotApi").GetSection("ApiKey").Value;
             var response = await _httpClient.GetAsync(
-                $"https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{account.Puuid}?api_key={riotApi}"
+                $"https://{region}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{account.Puuid}?api_key={riotApi}"
             );
             var summonerModel =
                 await response.Content.ReadFromJsonAsync<SummonerDto>()
@@ -65,11 +72,11 @@ namespace opggApi.Repositories
         }
 
         // SUMMONER ID NEoqpMnRIDbGhPCkT6IWNVdGjduskeXRMnS9-72ffDp9nxwh
-        public async Task<List<LeagueEntryDto>> GetRankeds(SummonerDto summoner)
+        public async Task<List<LeagueEntryDto>> GetRankeds(SummonerDto summoner, string region)
         {
             var riotApi = _configuration.GetSection("RiotApi").GetSection("ApiKey").Value;
             var response = await _httpClient.GetAsync(
-                $"https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/{summoner.Id}?api_key={riotApi}"
+                $"https://{region}.api.riotgames.com/lol/league/v4/entries/by-summoner/{summoner.Id}?api_key={riotApi}"
             );
             var leagueEntryModel = await response.Content.ReadFromJsonAsync<List<LeagueEntryDto>>();
             if (leagueEntryModel == null)

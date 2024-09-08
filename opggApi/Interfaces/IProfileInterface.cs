@@ -13,8 +13,8 @@ namespace opggApi.Interfaces
         Task<Profile> AddProfileToDb(Profile profile);
         Task<Profile> GetProfileFromDb(string gameName, string tagLine);
         Task<AccountDto> GetPuuid(string gameName, string tagLine);
-        Task<SummonerDto> GetSummoner(AccountDto account);
-        Task<List<LeagueEntryDto>> GetRankeds(SummonerDto summoner);
+        Task<SummonerDto> GetSummoner(AccountDto account, string region);
+        Task<List<LeagueEntryDto>> GetRankeds(SummonerDto summoner, string region);
         Task<Profile> UpdateProfile(Profile profile);
     }
 }

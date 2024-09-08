@@ -51,5 +51,46 @@ namespace opggApi.Mappers
             }
             return profile;
         }
+
+        public static string MapRegion(string region)
+        {
+            switch (region)
+            {
+                case "EUW":
+                    return "euw1";
+                case "EUNE":
+                    return "eun1";
+                case "NA":
+                    return "na1";
+                case "BR":
+                    return "br1";
+                case "JP":
+                    return "jp1";
+                case "KR":
+                    return "kr";
+                case "LAN":
+                    return "la1";
+                case "LAS":
+                    return "la2";
+                case "OCE":
+                    return "oc1";
+                case "TR":
+                    return "tr1";
+                case "RU":
+                    return "ru";
+                case "SG":
+                    return "sg1";
+                case "PH":
+                    return "ph2";
+                case "TH":
+                    return "th2";
+                case "TW":
+                    return "tw2";
+                case "VN":
+                    return "vn2";
+                default:
+                    return "euw1";
+            }
+        }
     }
 }
