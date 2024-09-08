@@ -15,5 +15,6 @@ namespace opggApi.Interfaces
         Task<AccountDto> GetPuuid(string gameName, string tagLine);
         Task<SummonerDto> GetSummoner(AccountDto account);
         Task<List<LeagueEntryDto>> GetRankeds(SummonerDto summoner);
+        Task<Profile> UpdateProfile(Profile profile);
     }
 }

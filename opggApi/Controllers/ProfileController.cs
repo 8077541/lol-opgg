@@ -61,5 +61,35 @@ namespace opggApi.Controllers
                 return Ok(profileDto);
             }
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateProfile(
+            [FromQuery] string gameName,
+            [FromQuery] string tagLine
+        )
+        {
+            var profile = await _profileRepository.GetPuuid(gameName, tagLine);
+
+            if (profile == null)
+            {
+                return NotFound();
+            }
+            var summoner = await _profileRepository.GetSummoner(profile);
+            if (summoner == null)
+            {
+                return NotFound();
+            }
+            var rankeds = await _profileRepository.GetRankeds(summoner);
+            if (rankeds == null)
+            {
+                return NotFound();
+            }
+
+            var profileDto = ProfileMapper.DtoToProfile(profile, summoner);
+            ProfileMapper.LeagueEntryToProfile(profileDto, rankeds);
+            await _profileRepository.UpdateProfile(profileDto);
+
+            return Ok(profileDto);
+        }
     }
 }

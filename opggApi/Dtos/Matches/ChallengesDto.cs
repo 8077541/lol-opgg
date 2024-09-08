@@ -15,8 +15,8 @@ namespace opggApi.Dtos.Matches
         public float EarliestDragonTakedown { get; set; }
         public float EarliestElderDragon { get; set; }
         public int EarlyLaningPhaseGoldExpAdvantage { get; set; }
-        public int FasterSupportQuestCompletion { get; set; }
-        public int FastestLegendary { get; set; }
+        public float FasterSupportQuestCompletion { get; set; }
+        public float FastestLegendary { get; set; }
         public int HadAfkTeammate { get; set; }
         public int HighestChampionDamageDealt { get; set; }
         public int HighestCrowdControlScore { get; set; }

@@ -78,5 +78,33 @@ namespace opggApi.Repositories
             }
             return leagueEntryModel;
         }
+
+        public Task<Profile> UpdateProfile(Profile profile)
+        {
+            var DbProfile = _context.Profiles.Where(p => p.Puuid == profile.Puuid).FirstOrDefault();
+            if (DbProfile != null)
+            {
+                DbProfile.SoloTier = profile.SoloTier;
+                DbProfile.SoloRank = profile.SoloRank;
+                DbProfile.SoloLeaguePoints = profile.SoloLeaguePoints;
+                DbProfile.SoloWins = profile.SoloWins;
+                DbProfile.SoloLosses = profile.SoloLosses;
+                DbProfile.SoloHotStreak = profile.SoloHotStreak;
+
+                DbProfile.FlexTier = profile.FlexTier;
+                DbProfile.FlexRank = profile.FlexRank;
+                DbProfile.FlexLeaguePoints = profile.FlexLeaguePoints;
+                DbProfile.FlexWins = profile.FlexWins;
+                DbProfile.FlexLosses = profile.FlexLosses;
+                DbProfile.FlexHotStreak = profile.FlexHotStreak;
+
+                _context.SaveChanges();
+                return Task.FromResult(DbProfile);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
