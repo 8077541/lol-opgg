@@ -1,0 +1,322 @@
+input {
+    background-color: #25242d;
+    padding: 20px;
+    border: none;
+
+}
+
+
+input:hover{
+   background-color: #8e6193;
+}
+input:focus{
+    background-color: #5a455d;
+    outline: none;
+}
+
+button {
+    background-color: #FA95FB;
+    padding: 20px;
+    border: none;
+    color: #000000;
+    border-bottom-right-radius:25%;
+    font-weight: 800;
+    font-size: 1rem;
+}
+#center {
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+    margin-top: 20%;
+}
+
+/* From Uiverse.io by StealthWorm */ 
+.loader {
+    display: flex;
+    width: 8rem;
+    height: 8rem;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .head {
+    width: 100%;
+    height: 100%;
+    background-color: #FA95FB;
+    border-radius: 50%;
+    animation: move 3s linear infinite;
+    box-shadow: 0 1rem 1rem #E220B8;
+    filter: blur(.3rem);
+    z-index: 1;
+  }
+  
+  .eye {
+    display: flex;
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    background-color: #EFFFC8;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 0 1rem #F752F7;
+    animation: move 5s alternate infinite;
+  }
+  
+  .eye::before {
+    content: "";
+    display: flex;
+    width: 1rem;
+    height: 2rem;
+    background-color: #000;
+    border-radius: 50%;
+    animation: blink 4s ease-in-out alternate infinite;
+  }
+  
+  .flames {
+    display: flex;
+    position: absolute;
+    z-index: 0;
+  }
+  
+  .particle {
+    display: flex;
+    position: absolute;
+    background-color: #FA95FB;
+    border-radius: 50%;
+    filter: blur(.3rem);
+    border-top: 5px solid #E220B8;
+    border-left: 5px solid #E220B8;
+  }
+  
+  .flames::before {
+    content: "";
+    position: absolute;
+    width: 8rem;
+    height: 8rem;
+    background: #f865d8;
+    filter: blur(5rem);
+    opacity: 0.5;
+    border-radius: 50%;
+    top: -8rem;
+    left: -4rem;
+    z-index: 4;
+    animation: pulse 3s linear infinite;
+  }
+  
+  .particle:nth-child(1) {
+    width: 4rem;
+    height: 4rem;
+    top: -6rem;
+    animation: move 7s alternate-reverse infinite;
+  }
+  
+  .particle:nth-child(2) {
+    width: 1.5rem;
+    height: 1.5rem;
+    top: -8rem;
+    left: -5rem;
+    animation: move 1.5s  ease-in-out reverse infinite;
+  }
+  
+  .particle:nth-child(3) {
+    width: 4rem;
+    height: 4rem;
+    top: -5rem;
+    left: -4rem;
+    animation: move 8s alternate-reverse infinite;
+  }
+  
+  .particle:nth-child(4) {
+    width: 3rem;
+    height: 3rem;
+    top: -7.5rem;
+    animation: move 4s alternate-reverse infinite;
+  }
+  
+  .particle:nth-child(5) {
+    width: 2rem;
+    height: 2rem;
+    top: -9rem;
+    left: 1rem;
+    animation: move 2.5s alternate-reverse infinite;
+  }
+  
+  .particle:nth-child(6) {
+    width: 2rem;
+    height: 2rem;
+    top: -6.8rem;
+    left: -1.5rem;
+    animation: move 5s alternate-reverse infinite;
+  }
+  
+  .particle:nth-child(7) {
+    width: 1rem;
+    height: 1rem;
+    top: -10rem;
+    left: -1rem;
+    animation: move 1.2s alternate-reverse infinite;
+  }
+  
+  .particle:nth-child(8) {
+    width: 1.3rem;
+    height: 1.3rem;
+    top: -7.5rem;
+    left: -2rem;
+    animation: move 2.5s alternate-reverse infinite;
+  }
+  
+  @keyframes move {
+    0% {
+      transform: translate(0, 0);
+    }
+  
+    50% {
+      transform: translate(4px, 6px);
+    }
+  
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  @keyframes blink {
+    20% {
+      transform: translate(0, 0);
+      height: 2rem;
+    }
+  
+    30% {
+      height: 0;
+    }
+  
+    40% {
+      transform: translate(5px, 10px);
+      height: 0;
+    }
+  
+    50% {
+      height: 2rem;
+    }
+  
+    70% {
+      transform: translate(-10px, -10px);
+    }
+  
+    90% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.5;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0.5;
+    }
+  }
+  
+  .button {
+    position: relative;
+    padding: 20px 20px;
+    border-radius: 6px;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    background-color: #ca83cb;
+    transition: all 0.2s ease;
+    font-weight: 800;
+    font-size: 1em;
+  }
+  
+  .button:active {
+    transform: scale(0.96);
+  }
+  
+  .button:before,
+  .button:after {
+    position: absolute;
+    content: "";
+    width: 150%;
+    left: 50%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: -1000;
+    background-repeat: no-repeat;
+  }
+  
+  .button:hover:before {
+    top: -70%;
+    background-image: radial-gradient(circle, #FA95FB 20%, transparent 20%),
+      radial-gradient(circle, transparent 20%, #FA95FB 20%, transparent 30%),
+      radial-gradient(circle, #FA95FB 20%, transparent 20%),
+      radial-gradient(circle, #FA95FB 20%, transparent 20%),
+      radial-gradient(circle, transparent 10%, #FA95FB 15%, transparent 20%),
+      radial-gradient(circle, #FA95FB 20%, transparent 20%),
+      radial-gradient(circle, #FA95FB 20%, transparent 20%),
+      radial-gradient(circle, #FA95FB 20%, transparent 20%),
+      radial-gradient(circle, #FA95FB 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+      10% 10%, 18% 18%;
+    background-position: 50% 120%;
+    animation: greentopBubbles 0.6s ease;
+  }
+  
+  @keyframes greentopBubbles {
+    0% {
+      background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+        40% 90%, 55% 90%, 70% 90%;
+    }
+  
+    50% {
+      background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+        50% 50%, 65% 20%, 90% 30%;
+    }
+  
+    100% {
+      background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+        50% 40%, 65% 10%, 90% 20%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+  }
+  
+  .button:hover::after {
+    bottom: -70%;
+    background-image: radial-gradient(circle, #FA95FB 20%, transparent 20%),
+      radial-gradient(circle, #FA95FB 20%, transparent 20%),
+      radial-gradient(circle, transparent 10%, #FA95FB 15%, transparent 20%),
+      radial-gradient(circle, #FA95FB 20%, transparent 20%),
+      radial-gradient(circle, #FA95FB 20%, transparent 20%),
+      radial-gradient(circle, #FA95FB 20%, transparent 20%),
+      radial-gradient(circle, #FA95FB 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    background-position: 50% 0%;
+    animation: greenbottomBubbles 0.6s ease;
+  }
+  
+  @keyframes greenbottomBubbles {
+    0% {
+      background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+        70% -10%, 70% 0%;
+    }
+  
+    50% {
+      background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+        105% 0%;
+    }
+  
+    100% {
+      background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+        110% 10%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+  }

@@ -1,7 +1,7 @@
 .navbar {
     width: 100%;
     background-color: #25242d;
-    color: #00ff99;
+    color: #F98DF5;
     padding: 10px;
     box-sizing: border-box;
     display: flex;
@@ -13,7 +13,9 @@ li {
 }
 .logo{
 display: inline;
-    top: 50%;
-
+font-weight: 800;
+}
+.credit{
+    display: inline;
     font-weight: 600;
 }

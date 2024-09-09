@@ -15,27 +15,28 @@ const Search = () => {
 
     return (
         <div id="center">
-          <form id="formSearchTwo" onSubmit={handleSearch}>
-
-        <input
-          autocomplete="off"
-          id="searchBar"
-          type="text"   
-  value={gameName}
-  onChange={(e) => setGameName(e.target.value)}
-          placeholder="Summoner's name"
-        />
-        <input
-          autocomplete="off"
-          id="tagBar"
-          type="text"
-  value={tagLine}
-  onChange={(e) => setTagLine(e.target.value)}
-          placeholder="Tagline"
-        />
-        <button id='searchButton' type="submit">Search</button>
-      </form>
-     
+  <div class="loader">
+  <div class="head"></div>
+  
+  <div class="flames">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+  
+  <div class="eye"></div>
+  </div>
+  <div className='searchBox'>
+  <input></input>  
+  <input></input>  
+  <input></input>  
+  <button className='button'>Search</button>
+  </div>   
     </div>
     );
 };
