@@ -14,7 +14,9 @@ const router = createBrowserRouter([
   },
   {
     path: '/profile/:gameName/:tagLine/:region',
-    element: <Profile />,
+    element: <>
+    <Profile />
+    </>,
   }
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));

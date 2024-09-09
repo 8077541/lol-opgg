@@ -36,7 +36,7 @@ return (
             <div>
             <img
               id="summonerIcon"
-              src={`http://ddragon.leagueoflegends.com/cdn/14.16.1/img/profileicon/${profileData.profileIconId}.png`}
+              src={`http://ddragon.leagueoflegends.com/cdn/14.17.1/img/profileicon/${profileData.profileIconId}.png`}
               alt="profileIcon"
             ></img>
                 <h3>{profileData.gameName} #{profileData.tagLine}</h3>

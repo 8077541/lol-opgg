@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import './Search.css';  
 
 const Search = () => {
     const navigate = useNavigate();
@@ -11,28 +12,31 @@ const Search = () => {
         navigate(`/profile/${gameName}/${tagLine}/${region}`);
     };
 
+
     return (
-        <div>
-            <input
-                type="text"
-                placeholder="Summoner Name"
-                value={gameName}
-                onChange={(e) => setGameName(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="#Riot Tag"
-                value={tagLine}
-                onChange={(e) => setTagLine(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="Region"
-                value={region}
-                onChange={(e) => setRegion(e.target.value)}
-            />
-            <button onClick={handleSearch}>Search</button>
-        </div>
+        <div id="center">
+          <form id="formSearchTwo" onSubmit={handleSearch}>
+
+        <input
+          autocomplete="off"
+          id="searchBar"
+          type="text"   
+  value={gameName}
+  onChange={(e) => setGameName(e.target.value)}
+          placeholder="Summoner's name"
+        />
+        <input
+          autocomplete="off"
+          id="tagBar"
+          type="text"
+  value={tagLine}
+  onChange={(e) => setTagLine(e.target.value)}
+          placeholder="Tagline"
+        />
+        <button id='searchButton' type="submit">Search</button>
+      </form>
+     
+    </div>
     );
 };
 
