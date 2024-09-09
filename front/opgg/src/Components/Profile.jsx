@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Search from './Search';
+import Navbar from './Navbar';
 
 const Profile = () => {
 
@@ -32,7 +33,7 @@ return (
 }else{
     return (
         <div>
-            <Search />
+            <Navbar />
             <div>
             <img
               id="summonerIcon"

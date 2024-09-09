@@ -32,10 +32,10 @@ const Search = () => {
   <div class="eye"></div>
   </div>
   <div className='searchBox'>
-  <input></input>  
-  <input></input>  
-  <input></input>  
-  <button className='button'>Search</button>
+  <input placeholder='Name' onChange={e => setGameName(e.target.value)}></input>  
+  <input placeholder='Tag' onChange={e => setTagLine(e.target.value)}></input>  
+  <input placeholder='Region'onChange={e => setRegion(e.target.value)}></input>  
+  <button className='button' onClick={handleSearch}>Search</button>
   </div>   
     </div>
     );

@@ -2,17 +2,26 @@ input {
     background-color: #25242d;
     padding: 20px;
     border: none;
-
+    color: #FA95FB;
+    font-size: 1em;
+    font-weight: 600;
+    border-right: 0.1px solid #2d2c36;
 }
 
 
 input:hover{
-   background-color: #8e6193;
+   background-color: #2d2d35;
+   
 }
 input:focus{
-    background-color: #5a455d;
+    background-color: #25242d;
+    caret-color: #FA95FB;
     outline: none;
+
 }
+input:focus::placeholder {
+    color: transparent;
+  }
 
 button {
     background-color: #FA95FB;
@@ -232,7 +241,7 @@ button {
     border: none;
     color: #000000;
     cursor: pointer;
-    background-color: #ca83cb;
+    background-color: #EFFFC8;
     transition: all 0.2s ease;
     font-weight: 800;
     font-size: 1em;
