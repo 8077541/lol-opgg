@@ -19,6 +19,27 @@ input:focus{
     outline: none;
 
 }
+select {
+  background-color: #25242d;
+  padding: 20px;
+  border: none;
+  color: #FA95FB;
+  font-size: 1em;
+  font-weight: 600;
+  border-right: 0.1px solid #2d2c36;
+}
+
+
+select:hover{
+ background-color: #2d2d35;
+ 
+}
+select:focus{
+  background-color: #25242d;
+  caret-color: #FA95FB;
+  outline: none;
+
+}
 input:focus::placeholder {
     color: transparent;
   }

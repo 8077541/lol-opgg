@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Search from './Search';
 import Navbar from './Navbar';
-
+import './Profile.css';
 const Profile = () => {
 
 const searchParams = useParams();
@@ -35,15 +35,17 @@ return (
         <div>
             <Navbar />
             <div>
+            <div className='profileTab'>
             <img
-              id="summonerIcon"
+              className="summonerIcon"
               src={`http://ddragon.leagueoflegends.com/cdn/14.17.1/img/profileicon/${profileData.profileIconId}.png`}
               alt="profileIcon"
             ></img>
-                <h3>{profileData.gameName} #{profileData.tagLine}</h3>
-                <h3>{profileData.soloTier} {profileData.soloRank} {profileData.soloLeaguePoints}LP</h3>
+                <h3>{profileData.gameName} <span className='riotTag'>#{profileData.tagLine}</span></h3>
+                <h3>Ranked Solo/Duo: {profileData.soloTier} {profileData.soloRank} {profileData.soloLeaguePoints}LP</h3>
+                <h3>Ranked Flex: {profileData.flexTier} {profileData.flexRank} {profileData.flexLeaguePoints}LP</h3>
                  
-            </div>
+            </div></div>
         </div>
     );
 }

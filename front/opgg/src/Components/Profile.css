@@ -1,0 +1,14 @@
+.profileTab{
+    margin-top: 1%;
+    margin-left: 3%;
+    border-right: solid 1px #bab8d1; 
+    width: 20%;
+}
+.summonerIcon{
+    border-radius: 50%;
+    width: 60%;
+    border: solid;
+}
+.riotTag{
+    color: rgb(87, 81, 87);
+}
