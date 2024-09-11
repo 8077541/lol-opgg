@@ -78,6 +78,10 @@ namespace opggApi.Repositories
             var response = await _httpClient.GetAsync(
                 $"https://{region}.api.riotgames.com/lol/league/v4/entries/by-summoner/{summoner.Id}?api_key={riotApi}"
             );
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("Rankeds not found");
+            }
             var leagueEntryModel = await response.Content.ReadFromJsonAsync<List<LeagueEntryDto>>();
             if (leagueEntryModel == null)
             {

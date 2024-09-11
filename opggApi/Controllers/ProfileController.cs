@@ -39,7 +39,7 @@ namespace opggApi.Controllers
             }
             else
             {
-                var mappedRegion = ProfileMapper.MapRegion(region);
+                var mappedRegion = ProfileMapper.MapRegion(region.ToUpper());
                 var profile = await _profileRepository.GetPuuid(gameName, tagLine);
 
                 if (profile == null)
