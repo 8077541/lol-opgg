@@ -59,11 +59,11 @@ return (
                 <img alt='rankEmblem' className='rankedEmblem' src={`https://raw.communitydragon.org/14.9/plugins/rcp-fe-lol-shared-components/global/default/${profileData.flexTier.toLowerCase()}.png`}></img> 
             </div>
             <div className='matches'>
-            {matches.map((match) => {
-                return (
-                    <Match key={match} match={match} />
-                );
-            })}  
+                <h3>Matches</h3>
+                <div className='matchList'>
+                {matches ? matches.map((match) => {return <Match key={match} match={match} ></Match>}) : <div></div>}
+                </div>
+
             </div>
             </div>
         </div>
