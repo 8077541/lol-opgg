@@ -3,10 +3,12 @@ import { useParams } from 'react-router-dom';
 import Search from './Search';
 import Navbar from './Navbar';
 import './Profile.css';
+import Match from './Match';
 const Profile = () => {
 
 const searchParams = useParams();
 const [profileData, setProfileData] = useState('');
+const [matches, setMatches] = useState('');
 // https://raw.communitydragon.org/14.9/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem/emblem-iron.png
 useEffect(() => {
     const fetchData = async () => {
@@ -14,7 +16,11 @@ useEffect(() => {
             const response = await fetch(`http://localhost:5283/api/profile?gameName=${searchParams.gameName}&tagLine=${searchParams.tagLine}&region=${searchParams.region}`);
             const data = await response.json();
             setProfileData(data);
+            const responseTwo = await fetch(`http://localhost:5283/api/match?puuid=${data.puuid}`);
+            const dataTwo = await responseTwo.json();
+            setMatches(dataTwo);
             console.log(data);
+            console.log(dataTwo);
             // Process the data here
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -46,18 +52,18 @@ return (
               alt="profileIcon"
             ></img>
                 <h3><span className='gameName'>{profileData.gameName}</span> <span className='riotTag'>#{profileData.tagLine}</span></h3>
-                <h3><span>Ranked Solo/Duo</span><br></br> {profileData.soloTier} {profileData.soloRank} {profileData.soloLeaguePoints}LP</h3>
+                <h3><span className='rankQueue'>Ranked Solo/Duo</span><br></br> {profileData.soloTier} {profileData.soloRank} {profileData.soloLeaguePoints}LP</h3>
                 <img alt='rankEmblem' className='rankedEmblem' src={`https://raw.communitydragon.org/14.9/plugins/rcp-fe-lol-shared-components/global/default/${profileData.soloTier.toLowerCase()}.png`}></img>
                 
-                <h3><span>Ranked Flex</span><br></br> {profileData.flexTier} {profileData.flexRank} {profileData.flexLeaguePoints}LP</h3>
+                <h3><span className='rankQueue'>Ranked Flex</span><br></br> {profileData.flexTier} {profileData.flexRank} {profileData.flexLeaguePoints}LP</h3>
                 <img alt='rankEmblem' className='rankedEmblem' src={`https://raw.communitydragon.org/14.9/plugins/rcp-fe-lol-shared-components/global/default/${profileData.flexTier.toLowerCase()}.png`}></img> 
             </div>
             <div className='matches'>
-                <h1>Matches here </h1>
-                <h1>Matches here </h1>
-                <h1>Matches here </h1>
-                <h1>Matches here </h1>
-                <h1>Matches here </h1>
+            {matches.map((match) => {
+                return (
+                    <Match key={match} match={match} />
+                );
+            })}  
             </div>
             </div>
         </div>

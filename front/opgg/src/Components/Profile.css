@@ -10,17 +10,24 @@
     text-align: center;
 
     float: left;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
 }
 .rankedEmblem{
-    width: 50%;
+    width: 45%;
     margin: 0 auto;
     
 
+}
+.rankQueue{
+    font-size: 1em;
+    font-weight: 800;
+    color: #F98DF5;
 }
 .summonerIcon{
     border-radius: 50%;
     width: 40%;
     border: solid;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.9);
 }
 .gameName{
     font-size: 1.5em;
