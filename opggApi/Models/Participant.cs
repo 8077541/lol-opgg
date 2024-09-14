@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using opggApi.Dtos.Matches;
 
 namespace opggApi.Models
 {
@@ -56,5 +57,31 @@ namespace opggApi.Models
 
         public int ParticipantId { get; set; }
         public bool Win { get; set; }
+
+        public int StatRune0 { get; set; }
+        public int StatRune1 { get; set; }
+        public int StatRune2 { get; set; }
+
+        public int PrimaryRune0 { get; set; }
+        public int PrimaryRune0Stat0 { get; set; }
+        public int PrimaryRune0Stat1 { get; set; }
+        public int PrimaryRune0Stat2 { get; set; }
+        public int PrimaryRune1 { get; set; }
+        public int PrimaryRune1Stat0 { get; set; }
+        public int PrimaryRune1Stat1 { get; set; }
+        public int PrimaryRune1Stat2 { get; set; }
+        public int PrimaryRune2 { get; set; }
+        public int PrimaryRune2Stat0 { get; set; }
+        public int PrimaryRune2Stat1 { get; set; }
+        public int PrimaryRune2Stat2 { get; set; }
+
+        public int SecondaryRune0 { get; set; }
+        public int SecondaryRune0Stat0 { get; set; }
+        public int SecondaryRune0Stat1 { get; set; }
+        public int SecondaryRune0Stat2 { get; set; }
+        public int SecondaryRune1 { get; set; }
+        public int SecondaryRune1Stat0 { get; set; }
+        public int SecondaryRune1Stat1 { get; set; }
+        public int SecondaryRune1Stat2 { get; set; }
     }
 }

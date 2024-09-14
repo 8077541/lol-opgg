@@ -1,0 +1,16 @@
+.match{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #e9eff4;
+    border-radius: 5px;
+    background-color: #17161c;
+}
+.mainCharacterPortrait{
+    width: 10%;
+}
