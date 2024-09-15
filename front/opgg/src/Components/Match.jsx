@@ -26,9 +26,10 @@ const Match = (props) => {
     function mainSummoner(arr, name){
         console.log(arr);
         for(let i = 0; i < arr.length; i++){
-            console.log(arr[i].riotIdGameName, name);
-            if(arr[i].riotIdGameName.toLowerCase() === name){
+            console.log(arr[i].riotIdGameName.toLowerCase(), name);
+            if(arr[i].riotIdGameName.toLowerCase() === name.toLowerCase()){
                 setSummoner(arr[i]);
+                console.log('SUMMONER SET');
             }
         }
    }    
@@ -36,7 +37,9 @@ const Match = (props) => {
         
 
     
-
+if(summoner === ''){
+   return <h1>Loading...</h1>
+}else{
   return (
     <div className='match'>
           <img
@@ -53,8 +56,11 @@ const Match = (props) => {
                     src={`http://ddragon.leagueoflegends.com/cdn/img/${summoner.primaryRune0}`}
                     title="Primary Rune"
                   ></img>
+                  <div className='participants'>
+            {matchData.participants.map(participant => {return <img className='participantImage'   src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`} ></img>})}
+            </div>
     </div>
   )
 }
-
+}
 export default Match

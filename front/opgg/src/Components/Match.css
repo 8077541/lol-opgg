@@ -10,7 +10,14 @@
     border: 1px solid #e9eff4;
     border-radius: 5px;
     background-color: #17161c;
+    display: inline-block;
 }
 .mainCharacterPortrait{
     width: 10%;
+}
+.participantImage{
+    width: 3%;
+}
+.participants{
+    float: right;
 }
