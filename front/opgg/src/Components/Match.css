@@ -1,6 +1,6 @@
 .match{
     float: right;
-    display: flex;
+  
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -10,14 +10,46 @@
     border: 1px solid #e9eff4;
     border-radius: 5px;
     background-color: #17161c;
-    display: inline-block;
+
+}
+#won{
+    background-color: #373653;
+}
+#lost{
+    background-color: #3b292e;
+}
+.summoner{
+    float: left;
 }
 .mainCharacterPortrait{
-    width: 10%;
+    width: 20%;
 }
 .participantImage{
-    width: 3%;
+    width: 7%;
 }
-.participants{
+/* .participants{
+    float: right;
+} */
+.winners, .losers {
+    display: flex;
+    flex-direction: column;
+    float: right;
+   margin-right: 0.5em;
+   margin-top: none;
+   padding: none;
+   justify-content: center;
+}
+.participant p{
     float: right;
 }
+.winners img, .losers img{
+  width: 15%;
+  
+}
+
+.teams {
+    display: inline;
+    justify-content: space-between;
+}
+
+.paritcipant{display: inline-block;}

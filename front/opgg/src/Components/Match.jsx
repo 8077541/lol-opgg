@@ -41,7 +41,8 @@ if(summoner === ''){
    return <h1>Loading...</h1>
 }else{
   return (
-    <div className='match'>
+    <div className='match' id={summoner.win ? "won" : "lost"}>
+      <div className='summoner'>
           <img
             className="mainCharacterPortrait"
             src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${summoner.championId}.png`}
@@ -56,12 +57,34 @@ if(summoner === ''){
                     src={`http://ddragon.leagueoflegends.com/cdn/img/${summoner.primaryRune0}`}
                     title="Primary Rune"
                   ></img>
-                  <div className='participants'>
-            {matchData.participants.map(participant => {return 
-            <div>
-            <img className='participantImage'   src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`} ></img>
-            <p>{participant.riotIdGameName}</p>
-            </div>})}
+          </div>
+            <div className='participants'>
+              <div className='winners'>
+            {matchData.participants.map(participant => {
+              if(participant.win){
+                return <div className='participant'> <img
+                className="characterPortrait"
+                src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`}
+                alt="Character Portrait"
+                title={participant.championName} />
+                <p>{participant.riotIdGameName}</p>
+                </div>
+              }
+          })}
+          </div>
+          <div className='losers'>
+            {matchData.participants.map(participant => {
+              if(!participant.win){
+                return <div className='participant'><img
+                className="characterPortrait"
+                src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`}
+                alt="Character Portrait"
+                title={participant.championName} />
+                <p>{participant.riotIdGameName}</p>
+                </div>
+              }
+          })}
+          </div>
             </div>
     </div>
   )
