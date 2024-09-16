@@ -57,7 +57,11 @@ if(summoner === ''){
                     title="Primary Rune"
                   ></img>
                   <div className='participants'>
-            {matchData.participants.map(participant => {return <img className='participantImage'   src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`} ></img>})}
+            {matchData.participants.map(participant => {return 
+            <div>
+            <img className='participantImage'   src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`} ></img>
+            <p>{participant.riotIdGameName}</p>
+            </div>})}
             </div>
     </div>
   )
