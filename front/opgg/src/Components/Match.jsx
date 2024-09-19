@@ -6,7 +6,52 @@ const Match = (props) => {
     const searchParams = useParams();
     const [matchData, setMatchData] = useState('');
     const [summoner, setSummoner] = useState('');
+    const [minutes, setMinutes] = useState(0);
 
+    function gameMode(id) {
+      switch (id) {
+        case 400:
+          return "Normal Draft";
+        case 420:
+          return "Ranked Solo/Duo";
+        case 430:
+          return "Normal Blind";
+        case 440:
+          return "Ranked Flex";
+        case 450:
+          return "ARAM";
+        case 830:
+          return "Intro Bots";
+        case 1700:
+          return "Arena";
+        default:
+          return "Unknown gamemode";
+      }}
+      function gameLength() {
+        let sLength = matchData.gameDuration;
+        let lengthDec = Math.trunc(sLength / 60);
+        return `${lengthDec}m ${sLength - lengthDec * 60}s`;
+      }
+      function time(timestamp) {
+        let tim = new Date().getTime();
+        console.log(tim);
+        let milago = tim - timestamp;
+        let secondsAgo = Math.trunc(milago / 1000);
+        let minutesAgo = Math.trunc(secondsAgo / 60);
+        
+        let hoursAgo = Math.trunc(minutesAgo / 60);
+        let daysAgo = Math.trunc(hoursAgo / 24);
+        if (daysAgo >= 1) {
+          return `${daysAgo} ${daysAgo == 1 ? "Day" : "Days"} ago`;
+        }
+        if (hoursAgo >= 1) {
+          return `${hoursAgo} ${hoursAgo == 1 ? "Hour" : "Hours"} ago`;
+        }
+        if (minutesAgo >= 1) {
+          return `${minutesAgo} ${minutesAgo == 1 ? "Minute" : "Minutes"} ago`;
+        }
+        return "now";
+      }
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -42,7 +87,15 @@ if(summoner === ''){
 }else{
   return (
     <div className='match' id={summoner.win ? "won" : "lost"}>
+      <div className='general'>
+          <h2>{gameMode(matchData.queueId)}</h2>
+        <h3>{time(matchData.gameEndTimeStamp)}</h3>
+        <hr></hr>
+        <h3>{gameLength()}</h3>
+        <h3>{summoner.win ? "Victory" : "Defeat"}</h3>
+      </div>
       <div className='summoner'>
+      
           <img
             className="mainCharacterPortrait"
             src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${summoner.championId}.png`}
@@ -50,13 +103,8 @@ if(summoner === ''){
             title={summoner.championName}
           ></img>
           
-          {summoner.kills} / {summoner.deaths} / {summoner.assists} {summoner.totalMinionsKilled}CS
-          <img
-                    id="keystoneMain"
-                    alt="Summoner's keystone rune"
-                    src={`http://ddragon.leagueoflegends.com/cdn/img/${summoner.primaryRune0}`}
-                    title="Primary Rune"
-                  ></img>
+          <h1> {summoner.kills} / {summoner.deaths} / {summoner.assists} {summoner.totalMinionsKilled}CS </h1>
+   
           </div>
             <div className='participants'>
               <div className='winners'>
@@ -67,7 +115,7 @@ if(summoner === ''){
                 src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`}
                 alt="Character Portrait"
                 title={participant.championName} />
-                <p>{participant.riotIdGameName}</p>
+                <h3>{participant.riotIdGameName}</h3>
                 </div>
               }
           })}
@@ -80,8 +128,9 @@ if(summoner === ''){
                 src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`}
                 alt="Character Portrait"
                 title={participant.championName} />
-                <p>{participant.riotIdGameName}</p>
+                 <h3>{participant.riotIdGameName}</h3>
                 </div>
+                
               }
           })}
           </div>
