@@ -102,9 +102,23 @@ if(summoner === ''){
             alt="Character Portrait"
             title={summoner.championName}
           ></img>
-          
+          <div>
           <h1> {summoner.kills} / {summoner.deaths} / {summoner.assists} {summoner.totalMinionsKilled}CS </h1>
-   
+          <h2>{summoner.riotIdGameName}</h2>
+          <h2>Kda: {Math.round(summoner.kda)}</h2>
+          
+   </div>
+   <div>
+    {summoner.items.map(item => {
+      return (
+        <img
+          className="item"
+          src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items/${item}.png`}
+          alt="Item"
+        ></img>
+      )
+    })}
+   </div>
           </div>
             <div className='participants'>
               <div className='winners'>

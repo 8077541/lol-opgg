@@ -13,8 +13,10 @@
 }
 #won{
     background-color: #373653;
+    color: #00ff00;
 }
 #lost{
+    color: #ff0000;
     background-color: #2e2326;
 }
 .general{
@@ -28,6 +30,7 @@
     display: flex;
     justify-content: left;
     align-items: center;
+    font-size: 0.8em;
     width: 40%;
 }
 .mainCharacterPortrait{
