@@ -19,6 +19,9 @@
     color: #ff0000;
     background-color: #2e2326;
 }
+.items img{
+    width: 40px;
+}
 .general{
     float: left;
     font-size: 0.7em;

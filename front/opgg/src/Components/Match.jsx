@@ -6,8 +6,28 @@ const Match = (props) => {
     const searchParams = useParams();
     const [matchData, setMatchData] = useState('');
     const [summoner, setSummoner] = useState('');
-    const [minutes, setMinutes] = useState(0);
+    const [csm, setCsm] = useState(0);
+    const [items, setItems] = useState([]);
 
+
+    function itemsArray(summoner){
+      let items = [];
+      items.push(summoner.item0);
+      items.push(summoner.item1);
+      items.push(summoner.item2);
+      items.push(summoner.item3);
+      items.push(summoner.item4);
+      items.push(summoner.item5);
+      items.push(summoner.item6);
+      setItems(items);
+    }
+
+    function calcCSM(){
+      let cs = summoner.totalMinionsKilled;
+      let time = matchData.gameDuration / 60;
+      let csm = cs / time;
+      return csm.toFixed(1);
+    }
     function gameMode(id) {
       switch (id) {
         case 400:
@@ -59,6 +79,7 @@ const Match = (props) => {
                 const data = await response.json();
                 setMatchData(data);
                 mainSummoner(data.participants, props.gameName);
+                itemsArray(summoner);
                 console.log(props);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -103,21 +124,23 @@ if(summoner === ''){
             title={summoner.championName}
           ></img>
           <div>
-          <h1> {summoner.kills} / {summoner.deaths} / {summoner.assists} {summoner.totalMinionsKilled}CS </h1>
+          <h1> {summoner.kills} / {summoner.deaths} / {summoner.assists} {summoner.totalMinionsKilled}CS ({calcCSM()})</h1>
           <h2>{summoner.riotIdGameName}</h2>
-          <h2>Kda: {Math.round(summoner.kda)}</h2>
+          <h2>Kda: {summoner.kda.toFixed(2)}</h2>
           
    </div>
-   <div>
-    {summoner.items.map(item => {
-      return (
+   <div className='items'>
+    {items.map(item => {
+      console.log(item);
+      if(item === 0){ return <div></div>}else{
+      return(
         <img
-          className="item"
-          src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items/${item}.png`}
-          alt="Item"
-        ></img>
-      )
+        className="itemPortrait"
+        src={`https://ddragon.leagueoflegends.com/cdn/14.18.1/img/item/${item}.png`}
+        alt="Item Portrait"
+      />)}
     })}
+
    </div>
           </div>
             <div className='participants'>
