@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './Match.css';
 
 const Match = (props) => {
+    const navigate = useNavigate(); 
     const searchParams = useParams();
     const [matchData, setMatchData] = useState('');
     const [summoner, setSummoner] = useState('');
@@ -27,6 +28,9 @@ const Match = (props) => {
       let time = matchData.gameDuration / 60;
       let csm = cs / time;
       return csm.toFixed(1);
+    }
+    function handleProfileRedirect(gameName, tagLine, region){
+      navigate(`/profile/${gameName}/${tagLine}/${region}`);
     }
     function gameMode(id) {
       switch (id) {
@@ -79,7 +83,7 @@ const Match = (props) => {
                 const data = await response.json();
                 setMatchData(data);
                 mainSummoner(data.participants, props.gameName);
-                itemsArray(summoner);
+
                 console.log(props);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -94,8 +98,18 @@ const Match = (props) => {
         for(let i = 0; i < arr.length; i++){
             console.log(arr[i].riotIdGameName.toLowerCase(), name);
             if(arr[i].riotIdGameName.toLowerCase() === name.toLowerCase()){
+              let items = [];
+              items.push(arr[i].item0);
+              items.push(arr[i].item1);
+              items.push(arr[i].item2);
+              items.push(arr[i].item3);
+              items.push(arr[i].item4);
+              items.push(arr[i].item5);
+              items.push(arr[i].item6);
+                setItems(items);
                 setSummoner(arr[i]);
-                console.log('SUMMONER SET');
+                
+                break;
             }
         }
    }    
@@ -103,7 +117,7 @@ const Match = (props) => {
         
 
     
-if(summoner === ''){
+if(summoner === '' && matchData === '') {
    return <h1>Loading...</h1>
 }else{
   return (
@@ -125,14 +139,14 @@ if(summoner === ''){
           ></img>
           <div>
           <h1> {summoner.kills} / {summoner.deaths} / {summoner.assists} {summoner.totalMinionsKilled}CS ({calcCSM()})</h1>
-          <h2>{summoner.riotIdGameName}</h2>
+      
           <h2>Kda: {summoner.kda.toFixed(2)}</h2>
           
    </div>
    <div className='items'>
     {items.map(item => {
       console.log(item);
-      if(item === 0){ return <div></div>}else{
+      if(!item){ return <div className='emptyItem'></div>}else{
       return(
         <img
         className="itemPortrait"
@@ -142,6 +156,7 @@ if(summoner === ''){
     })}
 
    </div>
+    
           </div>
             <div className='participants'>
               <div className='winners'>
@@ -152,7 +167,7 @@ if(summoner === ''){
                 src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`}
                 alt="Character Portrait"
                 title={participant.championName} />
-                <h3>{participant.riotIdGameName}</h3>
+                <h3 onClick={() => handleProfileRedirect(participant.riotIdGameName, participant.riotIdTagLine, matchData.platformId)}>{participant.riotIdGameName}</h3>
                 </div>
               }
           })}
@@ -165,7 +180,7 @@ if(summoner === ''){
                 src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`}
                 alt="Character Portrait"
                 title={participant.championName} />
-                 <h3>{participant.riotIdGameName}</h3>
+                 <h3 onClick={() => handleProfileRedirect(participant.riotIdGameName, participant.riotIdTagLine, matchData.platformId)}>{participant.riotIdGameName}</h3>
                 </div>
                 
               }
