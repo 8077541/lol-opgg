@@ -9,7 +9,27 @@ const Match = (props) => {
     const [summoner, setSummoner] = useState('');
     const [csm, setCsm] = useState(0);
     const [items, setItems] = useState([]);
+    const [runes, setRunes] = useState([]);
 
+    function assignRunes(runes){
+      let array = [];
+
+      for(let i = 0; i < runes.length; i++){
+      array.push({
+        id: runes[i].id,
+        name: runes[i].icon.toLowerCase(),
+      });
+      for(let j = 0; j < runes[i].slots.length; j++){
+        for(let k = 0; k < runes[i].slots[j].runes.length; k++){
+          array.push({
+            id: runes[i].slots[j].runes[k].id,
+            name: runes[i].slots[j].runes[k].icon.toLowerCase(),
+          });
+        }
+      }
+      setRunes(array);
+    }
+    }
 
     function itemsArray(summoner){
       let items = [];
@@ -81,7 +101,12 @@ const Match = (props) => {
             try {
                 const response = await fetch(`http://localhost:5283/api/match/matchDetails?matchId=${props.match}`);
                 const data = await response.json();
+                const runesResponse = await fetch('https://ddragon.leagueoflegends.com/cdn/14.18.1/data/en_US/runesReforged.json');
+                const runesData = await runesResponse.json();
+                setRunes(runesData);
                 setMatchData(data);
+                assignRunes(runesData);
+                console.log(runes);
                 mainSummoner(data.participants, props.gameName);
 
                 console.log(props);
@@ -108,6 +133,7 @@ const Match = (props) => {
               items.push(arr[i].item6);
                 setItems(items);
                 setSummoner(arr[i]);
+              
                 
                 break;
             }
