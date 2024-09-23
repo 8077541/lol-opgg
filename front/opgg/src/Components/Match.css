@@ -12,12 +12,14 @@
     overflow: hidden;
 }
 #won{
-    background-color: #373653;
-    color: #00ff00;
+    background-color: #29293a;
+    color: #8da1f9;
+    border-left: #8da1f9 5px solid;
 }
 #lost{
-    color: #ff0000;
+    color: #f98d8d;
     background-color: #2e2326;
+    border-left: #f98d8d 5px solid;
 }
 .items img{
     width: 30px;
@@ -35,7 +37,7 @@
 .emptyItem{
     width: 30px;
     height: 30px;
-    background-color: #00ff00;
+    background-color: #1d1d28;
 }
 .general{
     float: left;
@@ -52,8 +54,12 @@
 
     width: 50%;
 }
+.summonerStats{
+    margin-right: 1em;
+}
 .mainCharacterPortrait{
-    max-width: 125px;
+    max-width: 105px;
+    margin-right: 5px;
 }
 .participantImage{
     width: 7%;
@@ -73,11 +79,11 @@ margin-right: 0.2em;
 font-size: 0.5em;
 }
 .losers{
-    color: #ff0000;
+    color: #f98d8d;
     float: right;
 }
 .winners{
-    color: #00ff00;
+    color: #8da1f9;
     float: left;
 }
 .participant{

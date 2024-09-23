@@ -137,8 +137,9 @@ if(summoner === '' && matchData === '') {
             alt="Character Portrait"
             title={summoner.championName}
           ></img>
-          <div>
-          <h1> {summoner.kills} / {summoner.deaths} / {summoner.assists} {summoner.totalMinionsKilled}CS ({calcCSM()})</h1>
+          <div className='summonerStats'>
+          <h1> {summoner.kills} / {summoner.deaths} / {summoner.assists} </h1>
+          <h2>{summoner.totalMinionsKilled}CS ({calcCSM()})</h2>
       
           <h2>Kda: {summoner.kda.toFixed(2)}</h2>
           
