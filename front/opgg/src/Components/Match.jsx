@@ -10,7 +10,18 @@ const Match = (props) => {
     const [csm, setCsm] = useState(0);
     const [items, setItems] = useState([]);
     const [runes, setRunes] = useState([]);
+    const [summonerRunes, setSummonerRunes] = useState([]);
 
+    function setMainRunes(runes){
+      let array =[];
+      let userRunes = [summoner.primaryRune0, summoner.primaryRune1, summoner.primaryRune2, summoner.secondaryRune0, summoner.secondaryRune1];
+        userRunes.forEach(rune => {
+          console.log(runes.find(r => r.id === rune).name);
+          array.push(runes.find(r => r.id === rune).name);
+          
+        });
+        setSummonerRunes(array);
+    }
     function assignRunes(runes){
       let array = [];
 
@@ -28,6 +39,7 @@ const Match = (props) => {
         }
       }
       setRunes(array);
+      setMainRunes(array);
     }
     }
 
@@ -78,7 +90,7 @@ const Match = (props) => {
       }
       function time(timestamp) {
         let tim = new Date().getTime();
-        console.log(tim);
+     
         let milago = tim - timestamp;
         let secondsAgo = Math.trunc(milago / 1000);
         let minutesAgo = Math.trunc(secondsAgo / 60);
@@ -106,10 +118,10 @@ const Match = (props) => {
                 setRunes(runesData);
                 setMatchData(data);
                 assignRunes(runesData);
-                console.log(runes);
+                setMainRunes(runes);
                 mainSummoner(data.participants, props.gameName);
 
-                console.log(props);
+                
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -119,9 +131,9 @@ const Match = (props) => {
     }, [props.match]);
 
     function mainSummoner(arr, name){
-        console.log(arr);
+    
         for(let i = 0; i < arr.length; i++){
-            console.log(arr[i].riotIdGameName.toLowerCase(), name);
+          
             if(arr[i].riotIdGameName.toLowerCase() === name.toLowerCase()){
               let items = [];
               items.push(arr[i].item0);
@@ -172,7 +184,7 @@ if(summoner === '' && matchData === '') {
    </div>
    <div className='items'>
     {items.map(item => {
-      console.log(item);
+ 
       if(!item){ return <div className='emptyItem'></div>}else{
       return(
         <img
@@ -183,6 +195,13 @@ if(summoner === '' && matchData === '') {
     })}
 
    </div>
+    <div className='runes'>
+    {summonerRunes.map(rune => {
+      return <img
+      className="runePortrait"
+      src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/${rune}`}
+      alt="Rune Portrait" />})}
+    </div>
     
           </div>
             <div className='participants'>
