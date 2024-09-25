@@ -54,7 +54,16 @@
 
     width: 50%;
 }
+.runes{
+    width: 15%;
+    float: right;
+}
+.runes img{
+    width: 20px;    
+}
 .summonerStats{
+    width: 100%;
+    padding-right: 1em;
     margin-right: 1em;
 }
 .mainCharacterPortrait{

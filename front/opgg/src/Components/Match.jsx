@@ -12,16 +12,8 @@ const Match = (props) => {
     const [runes, setRunes] = useState([]);
     const [summonerRunes, setSummonerRunes] = useState([]);
 
-    function setMainRunes(runes){
-      let array =[];
-      let userRunes = [summoner.primaryRune0, summoner.primaryRune1, summoner.primaryRune2, summoner.secondaryRune0, summoner.secondaryRune1];
-        userRunes.forEach(rune => {
-          console.log(runes.find(r => r.id === rune).name);
-          array.push(runes.find(r => r.id === rune).name);
-          
-        });
-        setSummonerRunes(array);
-    }
+
+
     function assignRunes(runes){
       let array = [];
 
@@ -39,7 +31,7 @@ const Match = (props) => {
         }
       }
       setRunes(array);
-      setMainRunes(array);
+
     }
     }
 
@@ -58,8 +50,8 @@ const Match = (props) => {
     function calcCSM(){
       let cs = summoner.totalMinionsKilled;
       let time = matchData.gameDuration / 60;
-      let csm = cs / time;
-      return csm.toFixed(1);
+      let csm = (cs / time).toFixed(1);
+      return csm;
     }
     function handleProfileRedirect(gameName, tagLine, region){
       navigate(`/profile/${gameName}/${tagLine}/${region}`);
@@ -113,12 +105,12 @@ const Match = (props) => {
             try {
                 const response = await fetch(`http://localhost:5283/api/match/matchDetails?matchId=${props.match}`);
                 const data = await response.json();
-                const runesResponse = await fetch('https://ddragon.leagueoflegends.com/cdn/14.18.1/data/en_US/runesReforged.json');
+                const runesResponse = await fetch('https://ddragon.leagueoflegends.com/cdn/14.19.1/data/en_US/runesReforged.json');
                 const runesData = await runesResponse.json();
                 setRunes(runesData);
                 setMatchData(data);
                 assignRunes(runesData);
-                setMainRunes(runes);
+
                 mainSummoner(data.participants, props.gameName);
 
                 
@@ -144,18 +136,29 @@ const Match = (props) => {
               items.push(arr[i].item5);
               items.push(arr[i].item6);
                 setItems(items);
+                console.log(arr[i])
                 setSummoner(arr[i]);
-              
+                setMainRunes(runes);
+
                 
                 break;
             }
         }
    }    
-
+    function setMainRunes(runes){
+      let array =[];
+      let userRunes = [summoner.primaryRune0, summoner.primaryRune1, summoner.primaryRune2, summoner.secondaryRune0, summoner.secondaryRune1];
+        userRunes.forEach(rune => {
+          console.log(runes.find(r => r.id === rune).name);
+          array.push(runes.find(r => r.id === rune).name);
+          
+        });
+        setSummonerRunes(array);
+    }
         
 
     
-if(summoner === '' && matchData === '') {
+if(!summoner) {
    return <h1>Loading...</h1>
 }else{
   return (

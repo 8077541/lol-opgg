@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("opggApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79cf1638965db5e44b908ad58b63b2f7257147ca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4952584d4dc325eb5feb5c4e631f90a61b877b2")]
 [assembly: System.Reflection.AssemblyProductAttribute("opggApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("opggApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

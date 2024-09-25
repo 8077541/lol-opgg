@@ -74,6 +74,10 @@ namespace opggApi.Models
         public int PrimaryRune2Stat0 { get; set; }
         public int PrimaryRune2Stat1 { get; set; }
         public int PrimaryRune2Stat2 { get; set; }
+        public int PrimaryRune3 { get; set; }
+        public int PrimaryRune3Stat0 { get; set; }
+        public int PrimaryRune3Stat1 { get; set; }
+        public int PrimaryRune3Stat2 { get; set; }
 
         public int SecondaryRune0 { get; set; }
         public int SecondaryRune0Stat0 { get; set; }
