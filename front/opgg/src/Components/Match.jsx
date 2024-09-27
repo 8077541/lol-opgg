@@ -16,7 +16,7 @@ const Match = (props) => {
 
     function assignRunes(runes){
       let array = [];
-
+      console.log(runes);
       for(let i = 0; i < runes.length; i++){
       array.push({
         id: runes[i].id,
@@ -30,7 +30,10 @@ const Match = (props) => {
           });
         }
       }
-      setRunes(array);
+      let newSummoner = summoner;
+      newSummoner.runes = array;
+      setSummoner(newSummoner);
+      
 
     }
     }
@@ -112,6 +115,7 @@ const Match = (props) => {
                 assignRunes(runesData);
 
                 mainSummoner(data.participants, props.gameName);
+                console.log(summoner);
 
                 
             } catch (error) {
@@ -137,8 +141,9 @@ const Match = (props) => {
               items.push(arr[i].item6);
                 setItems(items);
                 console.log(arr[i])
+
                 setSummoner(arr[i]);
-                setMainRunes(runes);
+                setMainRunes(summoner.runes);
 
                 
                 break;
@@ -147,7 +152,7 @@ const Match = (props) => {
    }    
     function setMainRunes(runes){
       let array =[];
-      let userRunes = [summoner.primaryRune0, summoner.primaryRune1, summoner.primaryRune2, summoner.secondaryRune0, summoner.secondaryRune1];
+      let userRunes = [summoner.primaryRune0, summoner.primaryRune1, summoner.primaryRune2, summoner.primaryRune3, summoner.secondaryRune0, summoner.secondaryRune1];
         userRunes.forEach(rune => {
           console.log(runes.find(r => r.id === rune).name);
           array.push(runes.find(r => r.id === rune).name);
