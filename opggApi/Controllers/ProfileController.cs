@@ -52,10 +52,6 @@ namespace opggApi.Controllers
                     return NotFound();
                 }
                 var rankeds = await _profileRepository.GetRankeds(summoner, mappedRegion);
-                if (rankeds == null)
-                {
-                    return NotFound();
-                }
 
                 var profileDto = ProfileMapper.DtoToProfile(profile, summoner);
                 ProfileMapper.LeagueEntryToProfile(profileDto, rankeds);

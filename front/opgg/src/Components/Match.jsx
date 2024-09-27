@@ -6,7 +6,7 @@ const Match = (props) => {
     const navigate = useNavigate(); 
     const searchParams = useParams();
     const [matchData, setMatchData] = useState('');
-    const [summoner, setSummoner] = useState('');
+    const [summoner, setSummoner] = useState(null);
     const [csm, setCsm] = useState(0);
     const [items, setItems] = useState([]);
     const [runes, setRunes] = useState([]);
@@ -30,11 +30,8 @@ const Match = (props) => {
           });
         }
       }
-      let newSummoner = summoner;
-      newSummoner.runes = array;
-      setSummoner(newSummoner);
-      
-
+    
+     setRunes(array);
     }
     }
 
@@ -108,14 +105,13 @@ const Match = (props) => {
             try {
                 const response = await fetch(`http://localhost:5283/api/match/matchDetails?matchId=${props.match}`);
                 const data = await response.json();
+                mainSummoner(data.participants, props.gameName);
                 const runesResponse = await fetch('https://ddragon.leagueoflegends.com/cdn/14.19.1/data/en_US/runesReforged.json');
                 const runesData = await runesResponse.json();
-                setRunes(runesData);
                 setMatchData(data);
                 assignRunes(runesData);
-
-                mainSummoner(data.participants, props.gameName);
-                console.log(summoner);
+               
+       
 
                 
             } catch (error) {
@@ -132,6 +128,9 @@ const Match = (props) => {
           
             if(arr[i].riotIdGameName.toLowerCase() === name.toLowerCase()){
               let items = [];
+              let completeRunes = [];
+   
+              let userRunes = [arr[i].primaryRune0, arr[i].primaryRune1, arr[i].primaryRune2, arr[i].primaryRune3, arr[i].secondaryRune0, arr[i].secondaryRune1];
               items.push(arr[i].item0);
               items.push(arr[i].item1);
               items.push(arr[i].item2);
@@ -140,26 +139,33 @@ const Match = (props) => {
               items.push(arr[i].item5);
               items.push(arr[i].item6);
                 setItems(items);
-                console.log(arr[i])
-
+                if(runes){
+                userRunes.forEach(rune => {
+                  console.log(runes.find(r => r.id === rune).name);
+                  completeRunes.push(runes.find(r => r.id === rune).name);
+                  
+                });
+              }
+                setSummonerRunes(completeRunes);
                 setSummoner(arr[i]);
-                setMainRunes(summoner.runes);
+
 
                 
                 break;
             }
         }
    }    
-    function setMainRunes(runes){
-      let array =[];
-      let userRunes = [summoner.primaryRune0, summoner.primaryRune1, summoner.primaryRune2, summoner.primaryRune3, summoner.secondaryRune0, summoner.secondaryRune1];
-        userRunes.forEach(rune => {
-          console.log(runes.find(r => r.id === rune).name);
-          array.push(runes.find(r => r.id === rune).name);
+    // function setMainRunes(runes, userRunes){
+    //   let array =[];
+    
+    //     userRunes.forEach(rune => {
+    //       console.log(runes.find(r => r.id === rune).name);
+    //       array.push(runes.find(r => r.id === rune).name);
           
-        });
-        setSummonerRunes(array);
-    }
+    //     });
+    //     setSummonerRunes(array);
+    //     setSummoner({...summoner, runes: array});
+    // }
         
 
     
