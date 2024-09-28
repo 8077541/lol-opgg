@@ -102,12 +102,13 @@ const Match = (props) => {
       }
     useEffect(() => {
         const fetchData = async () => {
-            try {
+            try { 
+              const runesResponse = await fetch('https://ddragon.leagueoflegends.com/cdn/14.19.1/data/en_US/runesReforged.json');
+                const runesData = await runesResponse.json();
                 const response = await fetch(`http://localhost:5283/api/match/matchDetails?matchId=${props.match}`);
                 const data = await response.json();
                 mainSummoner(data.participants, props.gameName);
-                const runesResponse = await fetch('https://ddragon.leagueoflegends.com/cdn/14.19.1/data/en_US/runesReforged.json');
-                const runesData = await runesResponse.json();
+              
                 setMatchData(data);
                 assignRunes(runesData);
                
@@ -139,9 +140,9 @@ const Match = (props) => {
               items.push(arr[i].item5);
               items.push(arr[i].item6);
                 setItems(items);
-                if(runes){
+                if(runes!==''){
                 userRunes.forEach(rune => {
-                  console.log(runes.find(r => r.id === rune).name);
+                  console.log(runes);
                   completeRunes.push(runes.find(r => r.id === rune).name);
                   
                 });
