@@ -15,5 +15,6 @@ namespace opggApi.Data
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<MatchLoL> Matches { get; set; }
         public DbSet<Participant> Participants { get; set; }
+        public DbSet<RuneModel> Runes { get; set; }
     }
 }

@@ -14,6 +14,7 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<IProfileInterface, ProfileRepository>();
 builder.Services.AddScoped<IMatchInterface, MatchRepository>();
+builder.Services.AddScoped<IRuneInterface, RuneRepository>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {

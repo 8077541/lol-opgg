@@ -7,7 +7,7 @@ using opggApi.Dtos;
 
 namespace opggApi.Models
 {
-    public class Rune
+    public class RuneModel
     {
         [Key]
         public int Id { get; set; }
