@@ -10,5 +10,8 @@ namespace opggApi.Interfaces
     public interface IRuneInterface
     {
         Task<List<RuneModel>> GetRunes();
+        Task<RuneModel> GetRune(int id);
+
+        Task<List<RuneModel>> AddRunesToDb(List<RuneModel> runes);
     }
 }

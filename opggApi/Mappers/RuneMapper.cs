@@ -22,7 +22,7 @@ namespace opggApi.Mappers
                         runes.Add(
                             new RuneModel
                             {
-                                Id = rune.Id,
+                                RuneId = rune.Id,
                                 Name = rune.Name,
                                 Description = rune.LongDesc,
                                 Image = rune.Icon,

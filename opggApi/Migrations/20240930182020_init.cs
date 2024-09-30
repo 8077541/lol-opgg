@@ -63,6 +63,22 @@ namespace opggApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Runes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RuneId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Runes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Participants",
                 columns: table => new
                 {
@@ -112,6 +128,33 @@ namespace opggApi.Migrations
                     LargestMultiKill = table.Column<int>(type: "int", nullable: false),
                     ParticipantId = table.Column<int>(type: "int", nullable: false),
                     Win = table.Column<bool>(type: "bit", nullable: false),
+                    StatRune0 = table.Column<int>(type: "int", nullable: false),
+                    StatRune1 = table.Column<int>(type: "int", nullable: false),
+                    StatRune2 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune0 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune0Stat0 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune0Stat1 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune0Stat2 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune1 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune1Stat0 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune1Stat1 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune1Stat2 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune2 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune2Stat0 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune2Stat1 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune2Stat2 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune3 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune3Stat0 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune3Stat1 = table.Column<int>(type: "int", nullable: false),
+                    PrimaryRune3Stat2 = table.Column<int>(type: "int", nullable: false),
+                    SecondaryRune0 = table.Column<int>(type: "int", nullable: false),
+                    SecondaryRune0Stat0 = table.Column<int>(type: "int", nullable: false),
+                    SecondaryRune0Stat1 = table.Column<int>(type: "int", nullable: false),
+                    SecondaryRune0Stat2 = table.Column<int>(type: "int", nullable: false),
+                    SecondaryRune1 = table.Column<int>(type: "int", nullable: false),
+                    SecondaryRune1Stat0 = table.Column<int>(type: "int", nullable: false),
+                    SecondaryRune1Stat1 = table.Column<int>(type: "int", nullable: false),
+                    SecondaryRune1Stat2 = table.Column<int>(type: "int", nullable: false),
                     MatchLoLMatchId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -138,6 +181,9 @@ namespace opggApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "Profiles");
+
+            migrationBuilder.DropTable(
+                name: "Runes");
 
             migrationBuilder.DropTable(
                 name: "Matches");

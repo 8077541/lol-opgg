@@ -30,5 +30,30 @@ namespace opggApi.Repositories
             }
             throw new Exception("Error");
         }
+
+        public async Task<RuneModel?> GetRune(int id)
+        {
+            var rune = await _context.Runes.FindAsync(id);
+            if (rune == null)
+            {
+                return null;
+            }
+            return rune;
+        }
+
+        public async Task<List<RuneModel>> AddRunesToDb(List<RuneModel> runes)
+        {
+            foreach (var rune in runes)
+            {
+                var check = await _context.Runes.FindAsync(rune.Id);
+                if (check != null)
+                {
+                    throw new Exception("Rune already exists");
+                }
+                _context.Runes.Add(rune);
+            }
+            await _context.SaveChangesAsync();
+            return runes;
+        }
     }
 }

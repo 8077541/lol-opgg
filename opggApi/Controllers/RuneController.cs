@@ -22,6 +22,11 @@ namespace opggApi.Controllers
         public async Task<IActionResult> GetRunes()
         {
             var runes = await _runeRepository.GetRunes();
+            if (runes == null)
+            {
+                return NotFound();
+            }
+            await _runeRepository.AddRunesToDb(runes);
             return Ok(runes);
         }
     }

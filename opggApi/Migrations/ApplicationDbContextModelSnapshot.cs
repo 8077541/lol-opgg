@@ -370,6 +370,34 @@ namespace opggApi.Migrations
                     b.ToTable("Profiles");
                 });
 
+            modelBuilder.Entity("opggApi.Models.RuneModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RuneId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Runes");
+                });
+
             modelBuilder.Entity("opggApi.Models.Participant", b =>
                 {
                     b.HasOne("opggApi.Models.MatchLoL", null)

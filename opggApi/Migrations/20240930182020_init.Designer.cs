@@ -11,7 +11,7 @@ using opggApi.Data;
 namespace opggApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240908015013_init")]
+    [Migration("20240930182020_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -165,6 +165,54 @@ namespace opggApi.Migrations
                     b.Property<int>("PhysicalDamageTaken")
                         .HasColumnType("int");
 
+                    b.Property<int>("PrimaryRune0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune0Stat0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune0Stat1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune0Stat2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune1Stat0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune1Stat1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune1Stat2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune2Stat0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune2Stat1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune2Stat2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune3")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune3Stat0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune3Stat1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrimaryRune3Stat2")
+                        .HasColumnType("int");
+
                     b.Property<string>("Puuid")
                         .HasColumnType("nvarchar(max)");
 
@@ -173,6 +221,30 @@ namespace opggApi.Migrations
 
                     b.Property<string>("RiotIdTagLine")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SecondaryRune0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SecondaryRune0Stat0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SecondaryRune0Stat1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SecondaryRune0Stat2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SecondaryRune1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SecondaryRune1Stat0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SecondaryRune1Stat1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SecondaryRune1Stat2")
+                        .HasColumnType("int");
 
                     b.Property<int>("Spell1Casts")
                         .HasColumnType("int");
@@ -184,6 +256,15 @@ namespace opggApi.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Spell4Casts")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatRune0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatRune1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatRune2")
                         .HasColumnType("int");
 
                     b.Property<int>("TotalDamageDealt")
@@ -290,6 +371,34 @@ namespace opggApi.Migrations
                     b.HasKey("Puuid");
 
                     b.ToTable("Profiles");
+                });
+
+            modelBuilder.Entity("opggApi.Models.RuneModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RuneId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Runes");
                 });
 
             modelBuilder.Entity("opggApi.Models.Participant", b =>
