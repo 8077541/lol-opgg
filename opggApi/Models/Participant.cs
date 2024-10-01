@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using opggApi.Dtos.Matches;
 
@@ -87,5 +89,8 @@ namespace opggApi.Models
         public int SecondaryRune1Stat0 { get; set; }
         public int SecondaryRune1Stat1 { get; set; }
         public int SecondaryRune1Stat2 { get; set; }
+
+        [NotMapped]
+        public List<RuneModel> Runes { get; set; } = new List<RuneModel>();
     }
 }

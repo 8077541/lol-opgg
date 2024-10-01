@@ -11,7 +11,7 @@ using opggApi.Data;
 namespace opggApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240930182020_init")]
+    [Migration("20241001174749_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -392,6 +392,9 @@ namespace opggApi.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ParticipantId")
+                        .HasColumnType("int");
 
                     b.Property<int>("RuneId")
                         .HasColumnType("int");

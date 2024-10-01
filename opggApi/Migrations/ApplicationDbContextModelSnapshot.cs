@@ -390,6 +390,9 @@ namespace opggApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ParticipantId")
+                        .HasColumnType("int");
+
                     b.Property<int>("RuneId")
                         .HasColumnType("int");
 
