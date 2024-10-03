@@ -5,11 +5,12 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using opggApi.Dtos.Matches;
+using opggApi.Interfaces;
 using opggApi.Models;
 
 namespace opggApi.Mappers
 {
-    public class MatchMapper
+    public class MatchMapper()
     {
         public static MatchLoL MatchDtoToMatch(MatchDto matchDto)
         {
@@ -113,24 +114,10 @@ namespace opggApi.Mappers
                         SecondaryRune1Stat0 = participant.Perks.Styles[1].Selections[1].Var1,
                         SecondaryRune1Stat1 = participant.Perks.Styles[1].Selections[1].Var2,
                         SecondaryRune1Stat2 = participant.Perks.Styles[1].Selections[1].Var3,
-                        Runes = PerksToRunes(participant.Perks),
                     }
                 );
             }
             return result;
-        }
-
-        public static List<RuneModel> PerksToRunes(PerksDto perks)
-        {
-            var runes = new List<RuneModel> { };
-            foreach (var style in perks.Styles)
-            {
-                foreach (var selection in style.Selections)
-                {
-                    runes.Add(new RuneModel { RuneId = selection.Perk });
-                }
-            }
-            return runes;
         }
     }
 }
