@@ -33,6 +33,10 @@ namespace opggApi.Controllers
             var matchDb = await _matchRepository.GetMatchFromDb(matchId);
             if (matchDb != null)
             {
+                foreach (var participant in matchDb.Participants)
+                {
+                    participant.Runes = await _runeRepository.AddRunesToParticipant(participant);
+                }
                 return Ok(matchDb);
             }
             else

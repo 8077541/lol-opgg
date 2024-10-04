@@ -10,30 +10,8 @@ const Match = (props) => {
     const [csm, setCsm] = useState(0);
     const [items, setItems] = useState([]);
     const [runes, setRunes] = useState([]);
-    const [summonerRunes, setSummonerRunes] = useState([]);
 
 
-
-    function assignRunes(runes){
-      let array = [];
-      console.log(runes);
-      for(let i = 0; i < runes.length; i++){
-      array.push({
-        id: runes[i].id,
-        name: runes[i].icon.toLowerCase(),
-      });
-      for(let j = 0; j < runes[i].slots.length; j++){
-        for(let k = 0; k < runes[i].slots[j].runes.length; k++){
-          array.push({
-            id: runes[i].slots[j].runes[k].id,
-            name: runes[i].slots[j].runes[k].icon.toLowerCase(),
-          });
-        }
-      }
-    
-     setRunes(array);
-    }
-    }
 
     function itemsArray(summoner){
       let items = [];
@@ -103,18 +81,11 @@ const Match = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             try { 
-              const runesResponse = await fetch('https://ddragon.leagueoflegends.com/cdn/14.19.1/data/en_US/runesReforged.json');
-                const runesData = await runesResponse.json();
+          
                 const response = await fetch(`http://localhost:5283/api/match/matchDetails?matchId=${props.match}`);
                 const data = await response.json();
                 mainSummoner(data.participants, props.gameName);
-              
                 setMatchData(data);
-                assignRunes(runesData);
-               
-       
-
-                
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -129,10 +100,7 @@ const Match = (props) => {
           
             if(arr[i].riotIdGameName.toLowerCase() === name.toLowerCase()){
               let items = [];
-              let completeRunes = [];
-   
-              let userRunes = [arr[i].primaryRune0, arr[i].primaryRune1, arr[i].primaryRune2, arr[i].primaryRune3, arr[i].secondaryRune0, arr[i].secondaryRune1];
-              items.push(arr[i].item0);
+                items.push(arr[i].item0);
               items.push(arr[i].item1);
               items.push(arr[i].item2);
               items.push(arr[i].item3);
@@ -140,15 +108,9 @@ const Match = (props) => {
               items.push(arr[i].item5);
               items.push(arr[i].item6);
                 setItems(items);
-                if(runes!==''){
-                userRunes.forEach(rune => {
-                  console.log(runes);
-                  completeRunes.push(runes.find(r => r.id === rune).name);
-                  
-                });
-              }
-                setSummonerRunes(completeRunes);
+
                 setSummoner(arr[i]);
+                
 
 
                 
@@ -211,10 +173,11 @@ if(!summoner) {
 
    </div>
     <div className='runes'>
-    {summonerRunes.map(rune => {
-      return <img
+    {summoner.runes.map(rune => {
+
+      return <img key={rune.id}
       className="runePortrait"
-      src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/${rune}`}
+      src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/${rune.image.toLowerCase()}`}
       alt="Rune Portrait" />})}
     </div>
     
