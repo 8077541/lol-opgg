@@ -13,5 +13,6 @@ namespace opggApi.Interfaces
         Task<RuneModel> GetRune(int id);
 
         Task<List<RuneModel>> AddRunesToDb(List<RuneModel> runes);
+        Task<List<RuneModel>> AddRunesToParticipant(Participant participant);
     }
 }

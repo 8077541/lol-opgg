@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using opggApi.Data;
 using opggApi.Dtos.Runes;
 using opggApi.Interfaces;
@@ -33,7 +34,7 @@ namespace opggApi.Repositories
 
         public async Task<RuneModel?> GetRune(int id)
         {
-            var rune = await _context.Runes.FindAsync(id);
+            var rune = await _context.Runes.Where(r => r.RuneId == id).FirstOrDefaultAsync();
             if (rune == null)
             {
                 return null;
@@ -54,6 +55,29 @@ namespace opggApi.Repositories
             }
             await _context.SaveChangesAsync();
             return runes;
+        }
+
+        public async Task<List<RuneModel>> AddRunesToParticipant(Participant participant)
+        {
+            var runes = new List<int>
+            {
+                participant.PrimaryRune0,
+                participant.PrimaryRune1,
+                participant.PrimaryRune2,
+                participant.PrimaryRune3,
+                participant.SecondaryRune0,
+                participant.SecondaryRune1,
+            };
+            var mappedRunes = new List<RuneModel>();
+            foreach (var rune in runes)
+            {
+                var runeModel = await GetRune(rune);
+                if (runeModel != null)
+                {
+                    mappedRunes.Add(runeModel);
+                }
+            }
+            return mappedRunes;
         }
     }
 }

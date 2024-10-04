@@ -10,8 +10,10 @@ namespace opggApi.Controllers
 {
     [Route("api/match")]
     [ApiController]
-    public class MatchController(IMatchInterface matchRepository) : ControllerBase
+    public class MatchController(IMatchInterface matchRepository, IRuneInterface runeRepository)
+        : ControllerBase
     {
+        private readonly IRuneInterface _runeRepository = runeRepository;
         private readonly IMatchInterface _matchRepository = matchRepository;
 
         [HttpGet]
@@ -41,6 +43,10 @@ namespace opggApi.Controllers
                     return NotFound();
                 }
                 var matchModel = MatchMapper.MatchDtoToMatch(match);
+                foreach (var participant in matchModel.Participants)
+                {
+                    participant.Runes = await _runeRepository.AddRunesToParticipant(participant);
+                }
                 await _matchRepository.AddMatchToDb(matchModel);
                 return Ok(matchModel);
             }

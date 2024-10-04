@@ -33,21 +33,5 @@ namespace opggApi.Mappers
             }
             return runes;
         }
-
-        public static Participant AddRunesToParticipant(
-            Participant participant,
-            List<RuneModel> runes
-        )
-        {
-            foreach (var rune in runes)
-            {
-                if (participant.Runes == null)
-                {
-                    participant.Runes = new List<RuneModel>();
-                }
-                participant.Runes.Add(rune);
-            }
-            return participant;
-        }
     }
 }
