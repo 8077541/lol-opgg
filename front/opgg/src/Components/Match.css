@@ -2,13 +2,14 @@
     float: right;
     width: 70%;
     margin-top: 20px;
+    margin-right: 5px;
     padding: 15px;
     border: 1px solid #131313;
     border-radius: 5px;
     background-color: #17161c;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
     display: inline;
-    max-height: 150px;
+    max-height: 165px;
     overflow: hidden;
 }
 #won{
@@ -29,7 +30,7 @@
 
     margin: 0;
     padding: 0;
-    width: 50%;
+    width: 45%;
     max-height: 30px;
     margin-right: 1em;
     display: flex
@@ -74,7 +75,7 @@
     width: 7%;
 }
 .participants{
-    width: 30%  ;
+    width: 30%;
 
     margin: 0;
     padding: 0;
@@ -102,6 +103,10 @@ font-size: 0.5em;
     margin: 0;
     padding: 0;    
 }
+.participant:hover{
+    color: white;
+    cursor: pointer;
+}
 .participant img{
     width: 25px;
     height: 25px;
@@ -112,4 +117,17 @@ font-size: 0.5em;
 .participant h3{
     float: right;
     margin-left: 1em;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    
+ 
+    width: 100%
+}
+.footer:hover{
+    cursor: pointer;
+  color: white;
 }

@@ -13,6 +13,10 @@
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
 
 }
+.updateButton:hover{
+  cursor: pointer;
+  color: rgb(0 0 0 / 0.2);
+}
 .rankedEmblem{
     width: 45%;
     margin: 0 auto;

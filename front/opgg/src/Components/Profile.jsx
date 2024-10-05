@@ -61,7 +61,7 @@ return (
               alt="profileIcon"
             ></img>
                 <h3><span className='gameName'>{profileData.gameName}</span> <span className='riotTag'>#{profileData.tagLine}</span></h3>
-                <button onClick={updateButton}>Update</button>
+                <button onClick={updateButton} className='updateButton'>Update</button>
                 <h3><span className='rankQueue'>Ranked Solo/Duo</span><br></br> {profileData.soloTier} {profileData.soloRank} {profileData.soloLeaguePoints}LP</h3>
                 <img alt='rankEmblem' className='rankedEmblem' src={`https://raw.communitydragon.org/14.9/plugins/rcp-fe-lol-shared-components/global/default/${profileData.soloTier.toLowerCase()}.png`}></img>
                 

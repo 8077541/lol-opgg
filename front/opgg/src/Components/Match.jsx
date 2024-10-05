@@ -32,6 +32,7 @@ const Match = (props) => {
       return csm;
     }
     function handleProfileRedirect(gameName, tagLine, region){
+      setSummoner(null);
       navigate(`/profile/${gameName}/${tagLine}/${region}`);
     }
     function gameMode(id) {
@@ -137,6 +138,7 @@ if(!summoner) {
 }else{
   return (
     <div className='match' id={summoner.win ? "won" : "lost"}>
+     
       <div className='general'>
           <h2>{gameMode(matchData.queueId)}</h2>
         <h3>{time(matchData.gameEndTimeStamp)}</h3>
@@ -210,7 +212,9 @@ if(!summoner) {
               }
           })}
           </div>
+            
             </div>
+      <div className='footer'> V More Details V </div>
     </div>
   )
 }
