@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './Match.css';
-
+import MatchDetails from './MatchDetails';
 const Match = (props) => {
     const navigate = useNavigate(); 
     const searchParams = useParams();
@@ -11,7 +11,15 @@ const Match = (props) => {
     const [items, setItems] = useState([]);
     const [runes, setRunes] = useState([]);
 
-
+    function viewMatchDetails() {
+      console.log('clicked')
+      let matchDetails = document.querySelector('.viewMatchDetails');
+      if (matchDetails.style.display === "none") {
+        matchDetails.style.display = "block";
+      } else {
+        matchDetails.style.display = "none";
+      }
+    }
 
     function itemsArray(summoner){
       let items = [];
@@ -214,7 +222,15 @@ if(!summoner) {
           </div>
             
             </div>
-      <div className='footer'> V More Details V </div>
+      <div className='footer'   onClick={() => {
+            viewMatchDetails();
+          }}> V More Details V </div>
+      <div className="viewMatchDetails">
+        <MatchDetails
+        mainSummoner={summoner}
+        matchData={matchData}
+        ></MatchDetails>
+      </div>
     </div>
   )
 }

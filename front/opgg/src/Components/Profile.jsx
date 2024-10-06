@@ -71,9 +71,9 @@ return (
             <div className='matches'>
 
                 <div className='matchList'>
-                {matches ? matches.map((match) => {return <Match key={match} match={match} gameName={searchParams.gameName}></Match>}) : <div></div>}
+                {matches ? matches.map((match) => {return <><Match key={match} match={match} gameName={searchParams.gameName}></Match><h2>viewDetails</h2></>}) : <div></div>}
                 </div>
-
+                
             </div>
             </div>
         </div>
