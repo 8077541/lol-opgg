@@ -9,7 +9,7 @@
     background-color: #17161c;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
     display: inline;
-    max-height: 165px;
+    max-height: 200px;
     overflow: hidden;
 }
 #won{
@@ -44,7 +44,7 @@
     float: left;
     font-size: 0.7em;
     margin-right: 1em;
-    width: 15%;
+    width: 10%;
 }
 .summoner{
     float: left;
@@ -123,14 +123,12 @@ font-size: 0.5em;
     justify-content: center;
     align-items: center;
     margin-top: 0;
-    
- 
     width: 100%
 }
 .footer:hover{
     cursor: pointer;
   color: white;
 }
-.viewMatchDetails{
-    display: none;
+#matchDetails{
+    float: right;
 }

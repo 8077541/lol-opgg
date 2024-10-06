@@ -13,7 +13,7 @@ const Match = (props) => {
 
     function viewMatchDetails() {
       console.log('clicked')
-      let matchDetails = document.querySelector('.viewMatchDetails');
+      let matchDetails = document.querySelector(`.${props.match}`);
       if (matchDetails.style.display === "none") {
         matchDetails.style.display = "block";
       } else {
@@ -225,12 +225,7 @@ if(!summoner) {
       <div className='footer'   onClick={() => {
             viewMatchDetails();
           }}> V More Details V </div>
-      <div className="viewMatchDetails">
-        <MatchDetails
-        mainSummoner={summoner}
-        matchData={matchData}
-        ></MatchDetails>
-      </div>
+
     </div>
   )
 }
