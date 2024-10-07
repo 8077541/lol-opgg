@@ -20,6 +20,12 @@
   width: 100%;
   display: block;
 }
+.matches{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1%;
+}
 
 .updateButton:hover{
   cursor: pointer;
