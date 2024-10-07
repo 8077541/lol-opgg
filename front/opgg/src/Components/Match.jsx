@@ -14,8 +14,10 @@ const Match = (props) => {
     function viewMatchDetails() {
       console.log('clicked')
       let matchDetails = document.querySelector(`.${props.match}`);
+      let match = document.querySelector(`.${props.match}Main`);
       if (matchDetails.style.display === "none") {
         matchDetails.style.display = "block";
+        match.style.maxHeight = "500px";
       } else {
         matchDetails.style.display = "none";
       }
@@ -95,6 +97,7 @@ const Match = (props) => {
                 const data = await response.json();
                 mainSummoner(data.participants, props.gameName);
                 setMatchData(data);
+               
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -145,7 +148,7 @@ if(!summoner) {
    return <h1>Loading...</h1>
 }else{
   return (
-    <div className='match' id={summoner.win ? "won" : "lost"}>
+    <div className={`match ${props.match}Main`} id={summoner.win ? "won" : "lost"}>
      
       <div className='general'>
           <h2>{gameMode(matchData.queueId)}</h2>
@@ -225,7 +228,9 @@ if(!summoner) {
       <div className='footer'   onClick={() => {
             viewMatchDetails();
           }}> V More Details V </div>
-
+          <div style={{display: "none"}}className={props.match}>
+      <MatchDetails mainSummoner={summoner} matchData={matchData} style={{display: "none"}} ></MatchDetails>
+      </div>
     </div>
   )
 }
