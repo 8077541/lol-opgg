@@ -7,6 +7,10 @@ const MatchDetails = (props) => {
   const searchParams = useParams();
   const [matchData, setMatchData] = useState('');
   const [summoner, setSummoner] = useState(null);
+  function handleProfileRedirect(gameName, tagLine, region){
+    setSummoner(null);
+    navigate(`/profile/${gameName}/${tagLine}/${region}`);
+  }
   useEffect(() => {
     setMatchData(props.matchData);
     setSummoner(props.mainSummoner);
@@ -15,14 +19,26 @@ const MatchDetails = (props) => {
  
   return (
     <div >
+      <table>
+            <tr> 
+              <th></th>
+              <th >Summoner Name</th>
+              <th>Riot Tag</th>
+              <th>K/DA</th>
+            </tr>
       {!summoner ? <div></div> : (
         matchData.participants.map((participant) => {
           return (
-            <div>{participant.riotIdGameName} #{participant.riotIdTagLine} - {participant.championName}, {participant.kills} / {participant.deaths} / {participant.assists}</div>
-
+          <tr>
+            <td><img className='detailedChamp' src={`http://ddragon.leagueoflegends.com/cdn/14.16.1/img/champion/${participant.championName}.png`} alt="champion" /></td>
+            <td>{participant.riotIdGameName}</td>
+            <td>#{participant.riotIdTagLine}</td>
+            <td>{participant.kills}/{participant.deaths}/{participant.assists}</td>
+            </tr>
           )
         })
       )}
+      </table>
     </div>
   )
 }

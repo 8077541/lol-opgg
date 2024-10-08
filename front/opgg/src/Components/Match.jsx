@@ -17,7 +17,7 @@ const Match = (props) => {
       let match = document.querySelector(`.${props.match}Main`);
       if (matchDetails.style.display === "none") {
         matchDetails.style.display = "block";
-        match.style.maxHeight = "500px";
+        match.style.maxHeight = "600px";
       } else {
         matchDetails.style.display = "none";
       }
@@ -92,7 +92,7 @@ const Match = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             try { 
-          
+                setSummoner(null);
                 const response = await fetch(`http://localhost:5283/api/match/matchDetails?matchId=${props.match}`);
                 const data = await response.json();
                 mainSummoner(data.participants, props.gameName);

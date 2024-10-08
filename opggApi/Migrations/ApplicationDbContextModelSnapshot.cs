@@ -264,6 +264,12 @@ namespace opggApi.Migrations
                     b.Property<int>("StatRune2")
                         .HasColumnType("int");
 
+                    b.Property<int>("SummonerSpell1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SummonerSpell2")
+                        .HasColumnType("int");
+
                     b.Property<int>("TotalDamageDealt")
                         .HasColumnType("int");
 

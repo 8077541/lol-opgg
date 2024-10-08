@@ -148,6 +148,8 @@ namespace opggApi.Migrations
                     PrimaryRune3Stat0 = table.Column<int>(type: "int", nullable: false),
                     PrimaryRune3Stat1 = table.Column<int>(type: "int", nullable: false),
                     PrimaryRune3Stat2 = table.Column<int>(type: "int", nullable: false),
+                    SummonerSpell1 = table.Column<int>(type: "int", nullable: false),
+                    SummonerSpell2 = table.Column<int>(type: "int", nullable: false),
                     SecondaryRune0 = table.Column<int>(type: "int", nullable: false),
                     SecondaryRune0Stat0 = table.Column<int>(type: "int", nullable: false),
                     SecondaryRune0Stat1 = table.Column<int>(type: "int", nullable: false),

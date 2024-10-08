@@ -11,7 +11,7 @@ using opggApi.Data;
 namespace opggApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241001174749_init")]
+    [Migration("20241008192554_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -265,6 +265,12 @@ namespace opggApi.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("StatRune2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SummonerSpell1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SummonerSpell2")
                         .HasColumnType("int");
 
                     b.Property<int>("TotalDamageDealt")

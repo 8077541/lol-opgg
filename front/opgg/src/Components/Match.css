@@ -24,6 +24,7 @@
 }
 .items img{
     width: 30px;
+    border-radius: 25%;
     
 }
 .items{
@@ -39,6 +40,7 @@
     width: 30px;
     height: 30px;
     background-color: #1d1d28;
+    border-radius: 25%;
 }
 .general{
     float: left;

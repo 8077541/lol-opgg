@@ -114,6 +114,8 @@ namespace opggApi.Mappers
                         SecondaryRune1Stat0 = participant.Perks.Styles[1].Selections[1].Var1,
                         SecondaryRune1Stat1 = participant.Perks.Styles[1].Selections[1].Var2,
                         SecondaryRune1Stat2 = participant.Perks.Styles[1].Selections[1].Var3,
+                        SummonerSpell1 = participant.Summoner1Id,
+                        SummonerSpell2 = participant.Summoner2Id,
                     }
                 );
             }
