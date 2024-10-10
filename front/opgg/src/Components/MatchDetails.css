@@ -18,13 +18,27 @@
     align-items: center;
     width: 100%;
 }
-
+.participantRow:hover{
+    cursor: pointer;
+}
 .participantRunes img{
     width: 20px;
+}
+.emptyParticipantItem{
+    width: 25px;
+    height: 25px;
+    background-color: #1d1d28;
+    border-radius: 25%;
 }
 td {
     text-align: center;
     margin-right: 1em;
     margin-left: 1em;
     padding-right: 1em;
+}
+.participantRow:hover{
+    background-color: rgb(100, 100, 100, 0.2);
+}
+#mainsum{
+    background-color: rgba(168, 164, 190, 0.2);
 }

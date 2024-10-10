@@ -24,6 +24,7 @@ const MatchDetails = (props) => {
     navigate(`/profile/${gameName}/${tagLine}/${region}`);
   }
   useEffect(() => {
+    setSummoner(null);
     setMatchData(props.matchData);
     setSummoner(props.mainSummoner);
     console.log(summoner, matchData)
@@ -47,15 +48,15 @@ const MatchDetails = (props) => {
         matchData.participants.map((participant) => {
           let items = itemsArray(participant);
           return (
-          <tr>
-            <td><img className='detailedChamp' src={`http://ddragon.leagueoflegends.com/cdn/14.16.1/img/champion/${participant.championName}.png`} alt="champion" /></td>
-            <td>{participant.riotIdGameName}</td>
+          <tr onClick={() => handleProfileRedirect(participant.riotIdGameName, participant.riotIdTagLine, matchData.platformId)} className='participantRow' id={participant.riotIdGameName == summoner.riotIdGameName ? "mainsum" : ""}>
+            <td><img className='detailedChamp' src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`} alt="champion" /></td>
+            <td >{participant.riotIdGameName}</td>
             <td>#{participant.riotIdTagLine}</td>
             <td>{participant.kills}/{participant.deaths}/{participant.assists}</td>
             <td>{participant.totalMinionsKilled} ({(participant.totalMinionsKilled / (matchData.gameDuration / 60)).toFixed(1)})</td>
             <td className='participantItems'>
             {items.map(item => {
-            if(!item){ return <div className='emptyItem'></div>}else{
+            if(!item){ return <div className='emptyParticipantItem'></div>}else{
             return(
               <img
               className="itemParticipant"
