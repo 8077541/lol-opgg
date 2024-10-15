@@ -9,7 +9,10 @@ const Profile = () => {
 const searchParams = useParams();
 const [profileData, setProfileData] = useState('');
 const [matches, setMatches] = useState('');
-// https://raw.communitydragon.org/14.9/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem/emblem-iron.png
+
+
+
+	// https://raw.communitydragon.org/14.9/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem/emblem-iron.png
 useEffect(() => {
     const fetchData = async () => {
         try {
@@ -66,7 +69,7 @@ return (
                 <img alt='rankEmblem' className='rankedEmblem' src={`https://raw.communitydragon.org/14.9/plugins/rcp-fe-lol-shared-components/global/default/${profileData.soloTier.toLowerCase()}.png`}></img>
                 
                 <h3><span className='rankQueue'>Ranked Flex</span><br></br> {profileData.flexTier} {profileData.flexRank} {profileData.flexLeaguePoints}LP</h3>
-                <img alt='rankEmblem' className='rankedEmblem' src={`https://raw.communitydragon.org/14.9/plugins/rcp-fe-lol-shared-components/global/default/${profileData.flexTier.toLowerCase()}.png`}></img> 
+                <img alt='rankEmblem' className='rankedEmblem' src={`https://raw.communitydragon.org/14.9/plugins/rcp-fe-lol-shared-components/global/default/${profileData.flexTier.toLowerCase()}.png`} ></img> 
             </div>
             <div className='matches'>
 

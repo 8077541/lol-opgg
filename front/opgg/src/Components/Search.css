@@ -2,7 +2,7 @@ input {
     background-color: #25242d;
     padding: 20px;
     border: none;
-    color: #FA95FB;
+    color: #959cfb;
     font-size: 1em;
     font-weight: 600;
     border-right: 0.1px solid #2d2c36;
@@ -15,7 +15,7 @@ input:hover{
 }
 input:focus{
     background-color: #25242d;
-    caret-color: #FA95FB;
+    caret-color: #959cfb;
     outline: none;
 
 }
@@ -23,7 +23,7 @@ select {
   background-color: #25242d;
   padding: 20px;
   border: none;
-  color: #FA95FB;
+  color: #959cfb;
   font-size: 1em;
   font-weight: 600;
   border-right: 0.1px solid #2d2c36;
@@ -45,7 +45,7 @@ input:focus::placeholder {
   }
 
 button {
-    background-color: #FA95FB;
+    background-color: #959cfb;
     padding: 20px;
     border: none;
     color: #000000;
@@ -74,10 +74,10 @@ button {
   .head {
     width: 100%;
     height: 100%;
-    background-color: #FA95FB;
+    background-color: #959cfb;
     border-radius: 50%;
     animation: move 3s linear infinite;
-    box-shadow: 0 1rem 1rem #E220B8;
+    box-shadow: 0 1rem 1rem #208ee2;
     filter: blur(.3rem);
     z-index: 1;
   }
@@ -92,7 +92,7 @@ button {
     align-items: center;
     justify-content: center;
     z-index: 2;
-    box-shadow: 0 0 1rem #F752F7;
+    box-shadow: 0 0 1rem #529ff7;
     animation: move 5s alternate infinite;
   }
   
@@ -115,11 +115,11 @@ button {
   .particle {
     display: flex;
     position: absolute;
-    background-color: #FA95FB;
+    background-color: #959cfb;
     border-radius: 50%;
     filter: blur(.3rem);
-    border-top: 5px solid #E220B8;
-    border-left: 5px solid #E220B8;
+    border-top: 5px solid #2081e2;
+    border-left: 5px solid #2081e2;
   }
   
   .flames::before {
@@ -127,7 +127,7 @@ button {
     position: absolute;
     width: 8rem;
     height: 8rem;
-    background: #f865d8;
+    background: #659bf8;
     filter: blur(5rem);
     opacity: 0.5;
     border-radius: 50%;
@@ -286,15 +286,15 @@ button {
   
   .button:hover:before {
     top: -70%;
-    background-image: radial-gradient(circle, #FA95FB 20%, transparent 20%),
-      radial-gradient(circle, transparent 20%, #FA95FB 20%, transparent 30%),
-      radial-gradient(circle, #FA95FB 20%, transparent 20%),
-      radial-gradient(circle, #FA95FB 20%, transparent 20%),
-      radial-gradient(circle, transparent 10%, #FA95FB 15%, transparent 20%),
-      radial-gradient(circle, #FA95FB 20%, transparent 20%),
-      radial-gradient(circle, #FA95FB 20%, transparent 20%),
-      radial-gradient(circle, #FA95FB 20%, transparent 20%),
-      radial-gradient(circle, #FA95FB 20%, transparent 20%);
+    background-image: radial-gradient(circle, #959cfb 20%, transparent 20%),
+      radial-gradient(circle, transparent 20%, #959cfb 20%, transparent 30%),
+      radial-gradient(circle, #959cfb 20%, transparent 20%),
+      radial-gradient(circle, #959cfb 20%, transparent 20%),
+      radial-gradient(circle, transparent 10%, #959cfb 15%, transparent 20%),
+      radial-gradient(circle, #959cfb 20%, transparent 20%),
+      radial-gradient(circle, #959cfb 20%, transparent 20%),
+      radial-gradient(circle, #959cfb 20%, transparent 20%),
+      radial-gradient(circle, #959cfb 20%, transparent 20%);
     background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
       10% 10%, 18% 18%;
     background-position: 50% 120%;
